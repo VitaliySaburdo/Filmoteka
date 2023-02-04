@@ -1,0 +1,21 @@
+// Utils
+@import './utils/mixin';
+@import './utils/modern-normalize';
+@import './utils/variables';
+@import './utils/visually-hidden';
+
+// Base
+@import './base/body_settings';
+@import './base/reset';
+@import './base/container';
+
+// Components
+@import './components/button';
+@import './components/modal';
+@import './components/pagination';
+
+// Layout
+@import './layout/header-home';
+@import './layout/header-library';
+@import './layout/gallery';
+@import './layout/footer';

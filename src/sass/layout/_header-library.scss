@@ -1,0 +1,58 @@
+/**
+  |============================
+  | Header library
+  |============================
+*/
+.button__box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  @include mq(tab) {
+    gap: 32px;
+  }
+  @include mq(desk) {
+    gap: 16px;
+  }
+}
+.watched_button {
+  @extend %btn;
+  width: 130px;
+  background-color: transparent;
+  color: var(--cl-txt-wite);
+  @include mq(tab) {
+    width: 152px;
+  }
+  @include mq(desk) {
+    width: 147px;
+    height: 42px;
+  }
+}
+.btn__active {
+  border: 1px solid var(--cl-accent);
+  background-color: var(--cl-accent);
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
+
+.queue_button {
+  @extend %btn;
+  width: 130px;
+  background-color: transparent;
+  color: var(--cl-txt-wite);
+  @include mq(tab) {
+    width: 152px;
+  }
+  @include mq(desk) {
+    width: 147px;
+    height: 42px;
+  }
+  // &:focus {
+  //   border: 1px solid var(--cl-accent);
+  //   background-color: var(--cl-accent);
+  //   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  // }
+}
+.btn__active {
+  border: 1px solid var(--cl-accent);
+  background-color: var(--cl-accent);
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
