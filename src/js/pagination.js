@@ -1,5 +1,5 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import newsApiService from './fetch';
 import { renderGalleryFilms } from './gallery';
 
@@ -12,24 +12,22 @@ export const options = {
   itemsPerPage: 1,
   visiblePages: 5,
   page: 1,
-  centerAlign: false,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
+  centerAlign: true,
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
     currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      '<strong class="tui-page-btn tui-is-selected" >{{page}}</strong>',
     moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
+      '<span class="tui-ico-{{type}}"></span>' +
       '</a>',
     disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
+      '<span class="tui-ico-{{type}}"></span>' +
       '</span>',
     moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
+      '<span class="tui-ico-ellip"></span>' +
       '</a>',
   },
 };

@@ -1,7 +1,7 @@
 import NewsApiService from './fetch';
 import { renderGalleryFilms } from './gallery';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import { options, backToTop } from './pagination';
 
 const ApiService = new NewsApiService();
