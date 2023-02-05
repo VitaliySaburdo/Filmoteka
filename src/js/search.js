@@ -29,10 +29,11 @@ async function onSubmit(e) {
   });
 
   pagination.on('afterMove', event => {
-    const currentPage = event.page;
-    ApiService.getFilmOnSearch(currentPage).then(data => {
+    let currentPage = event.page;
+    ApiService.page = currentPage;
+
+    ApiService.getFilmOnSearch().then(data => {
       data;
-      console.log(data);
       cardsContainer.innerHTML = '';
       renderGalleryFilms(data.results);
     });

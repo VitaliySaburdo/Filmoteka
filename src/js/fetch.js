@@ -13,17 +13,7 @@ export default class NewsApiService {
   async fetchTrendingMovie() {
     try {
       const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.page}`;
-      const response = await axios.get(url);
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // Запрос для пагинации
-  async fetchPaginationMovie(page) {
-    try {
-      const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`;
+      console.log(this.page);
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -43,9 +33,9 @@ export default class NewsApiService {
   }
 
   // Запрос по поиску
-  async getFilmOnSearch(page) {
+  async getFilmOnSearch() {
     try {
-      const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${page}`;
+      const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${this.page}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {

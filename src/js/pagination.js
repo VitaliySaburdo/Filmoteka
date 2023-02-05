@@ -42,8 +42,10 @@ ApiService.fetchTrendingMovie().then(data => {
 });
 
 pagination.on('afterMove', event => {
-  const currentPage = event.page;
-  ApiService.fetchPaginationMovie(currentPage).then(data => {
+  let currentPage = event.page;
+  ApiService.page = currentPage;
+
+  ApiService.fetchTrendingMovie().then(data => {
     data;
     console.log(data);
     galleryEl.innerHTML = '';
