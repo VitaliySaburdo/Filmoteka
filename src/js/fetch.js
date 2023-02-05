@@ -43,10 +43,14 @@ export default class NewsApiService {
   }
 
   // Запрос по поиску
-  async getFilmOnSearch(query, page) {
-    const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}`;
-    const response = await axios.get(url);
-    return response.data;
+  async getFilmOnSearch(page) {
+    try {
+      const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${page}`;
+      const response = await axios.get(url);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Запрос информации по жанрам

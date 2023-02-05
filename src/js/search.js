@@ -1,31 +1,41 @@
 import NewsApiService from './fetch';
 import { renderGalleryFilms } from './gallery';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import { options, backToTop } from './pagination';
 
-const NewApiService = new NewsApiService();
+const ApiService = new NewsApiService();
 const searchForm = document.querySelector('#header-form');
 const cardsContainer = document.querySelector('.gallery-list');
+const container = document.getElementById('pagination');
 
 searchForm.addEventListener('submit', onSubmit);
 
-let currentPage = 1;
-let amountOfPages = 1;
-let query = '';
-let dataArray = [];
-
 async function onSubmit(e) {
   e.preventDefault();
-  query = e.currentTarget.elements.searchQuery.value.trim();
-  try {
-    const { results, page, total_pages } = await NewApiService.getFilmOnSearch(
-      query
-    );
-    currentPage = page;
-    amountOfPages = total_pages;
-    dataArray = results;
-  } catch (error) {
-    console.log(error);
-  }
-  cardsContainer.innerHTML = '';
-  renderGalleryFilms(dataArray);
-  console.log(amountOfPages);
+  ApiService.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
+
+  const pagination = new Pagination(container, options);
+
+  ApiService.getFilmOnSearch().then(data => {
+    const total = data.total_pages;
+    pagination.reset(total);
+  });
+
+  ApiService.getFilmOnSearch().then(data => {
+    data;
+    cardsContainer.innerHTML = '';
+    renderGalleryFilms(data.results);
+  });
+
+  pagination.on('afterMove', event => {
+    const currentPage = event.page;
+    ApiService.getFilmOnSearch(currentPage).then(data => {
+      data;
+      console.log(data);
+      cardsContainer.innerHTML = '';
+      renderGalleryFilms(data.results);
+    });
+    backToTop();
+  });
 }
