@@ -1,6 +1,7 @@
 import NewsApiService from './fetch';
 import { renderGalleryFilms } from './gallery';
 import Pagination from 'tui-pagination';
+import Notiflix from 'notiflix';
 
 import { options, backToTop } from './pagination';
 
@@ -15,6 +16,15 @@ async function onSubmit(e) {
   e.preventDefault();
   ApiService.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
 
+  if (ApiService.searchQuery === '') {
+    Notiflix.Notify.info(`Please enter your query`, {
+      position: 'center-top',
+      distance: '40px',
+      cssAnimationStyle: 'from-top',
+    });
+    return;
+  }
+
   const pagination = new Pagination(container, options);
 
   ApiService.getFilmOnSearch().then(data => {
@@ -25,18 +35,21 @@ async function onSubmit(e) {
   ApiService.getFilmOnSearch().then(data => {
     data;
     console.log(data.results);
-    if (data.results !== 0) {
+    if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
       renderGalleryFilms(data.results);
     } else {
-      alert('No movies');
+      return Notiflix.Notify.info(`${ApiService.searchQuery} movie not found`, {
+        position: 'center-top',
+        distance: '40px',
+        cssAnimationStyle: 'from-top',
+      });
     }
   });
 
   pagination.on('afterMove', event => {
     let currentPage = event.page;
     ApiService.page = currentPage;
-
     ApiService.getFilmOnSearch().then(data => {
       data;
       cardsContainer.innerHTML = '';
