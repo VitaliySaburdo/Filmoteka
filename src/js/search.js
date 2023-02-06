@@ -24,8 +24,13 @@ async function onSubmit(e) {
 
   ApiService.getFilmOnSearch().then(data => {
     data;
-    cardsContainer.innerHTML = '';
-    renderGalleryFilms(data.results);
+    console.log(data.results);
+    if (data.results !== 0) {
+      cardsContainer.innerHTML = '';
+      renderGalleryFilms(data.results);
+    } else {
+      alert('No movies');
+    }
   });
 
   pagination.on('afterMove', event => {

@@ -13,7 +13,6 @@ export default class NewsApiService {
   async fetchTrendingMovie() {
     try {
       const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.page}`;
-      console.log(this.page);
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
