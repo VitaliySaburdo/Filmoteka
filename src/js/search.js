@@ -17,7 +17,7 @@ async function onSubmit(e) {
   ApiService.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
 
   if (ApiService.searchQuery === '') {
-    Notiflix.Notify.info(`Please enter your query`, {
+    Notiflix.Notify.init(`Please enter your query`, {
       position: 'center-top',
       distance: '40px',
       cssAnimationStyle: 'from-top',
