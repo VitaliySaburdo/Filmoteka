@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
 
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'ab57a8d74b0df3fdba80a78e42f32d17';
@@ -12,15 +11,12 @@ export default class NewsApiService {
   }
   // Запрос популярных фильмов на главную страницу
   async fetchTrendingMovie() {
-    Notiflix.Loading.circle();
     try {
       const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.page}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
       console.log(error);
-    } finally {
-      Notiflix.Loading.remove();
     }
   }
 
@@ -37,15 +33,12 @@ export default class NewsApiService {
 
   // Запрос по поиску
   async getFilmOnSearch() {
-    Notiflix.Loading.circle();
     try {
       const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${this.page}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
       console.log(error);
-    } finally {
-      Notiflix.Loading.remove();
     }
   }
 
