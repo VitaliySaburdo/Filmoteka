@@ -106,9 +106,6 @@ function clearFilmList() {
 
 function renderSavedFilms(name) {
   clearFilmList();
-  if (libraryEl) {
-    massege.classList.add('is-hidden');
-  }
   const storageMovies = getFromStorage(name);
   if (storageMovies) {
     renderLibrary(storageMovies, name);
