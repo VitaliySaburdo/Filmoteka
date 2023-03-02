@@ -7,6 +7,7 @@ import {
 export const libraryEl = document.querySelector('.library__list');
 const queueButton = document.querySelector('.queue_button');
 const watchedButton = document.querySelector('.watched_button');
+const massege = document.querySelector('.library__txt');
 
 let queueMovie = getFromStorage('queue') || [];
 let watchMovie = getFromStorage('watch') || [];
@@ -105,6 +106,9 @@ function clearFilmList() {
 
 function renderSavedFilms(name) {
   clearFilmList();
+  if (libraryEl) {
+    massege.classList.add('is-hidden');
+  }
   const storageMovies = getFromStorage(name);
   if (storageMovies) {
     renderLibrary(storageMovies, name);

@@ -6,6 +6,7 @@
 
 .gallery-list,
 .library__list {
+  position: relative;
   display: grid;
   row-gap: 20px;
   padding-top: 20px;
@@ -26,6 +27,12 @@
     row-gap: 32px;
     column-gap: 15px;
   }
+}
+.library__txt {
+  position: absolute;
+  font-size: 24px;
+  left: 45%;
+  top: 50%;
 }
 .gallery__item {
   position: relative;
