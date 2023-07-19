@@ -7,7 +7,6 @@ import {
 export const libraryEl = document.querySelector('.library__list');
 const queueButton = document.querySelector('.queue_button');
 const watchedButton = document.querySelector('.watched_button');
-const massege = document.querySelector('.library__txt');
 
 let queueMovie = getFromStorage('queue') || [];
 let watchMovie = getFromStorage('watch') || [];
@@ -82,6 +81,7 @@ export function libraryStorage(movieData) {
 }
 
 handleClickWatched();
+
 function handleClickWatched() {
   renderSavedFilms('watch');
   if (libraryEl) {
@@ -112,7 +112,7 @@ function renderSavedFilms(name) {
   }
 }
 
-function renderLibrary(data, name) {
+function renderLibrary(data) {
   const markup = data
     .map(
       ({
