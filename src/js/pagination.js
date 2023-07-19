@@ -35,8 +35,9 @@ export const options = {
 const pagination = new Pagination(container, options);
 
 ApiService.fetchTrendingMovie().then(data => {
-  let total = data.total_pages;
-  pagination.reset(total);
+  // console.log(data);
+  // let total = data.total_pages;
+  pagination.reset(500);
 });
 
 pagination.on('afterMove', event => {
@@ -45,11 +46,10 @@ pagination.on('afterMove', event => {
 
   ApiService.fetchTrendingMovie().then(data => {
     data;
-    console.log(data);
     galleryEl.innerHTML = '';
     renderGalleryFilms(data.results);
   });
-  backToTop();
+  // backToTop();
 });
 
 export function backToTop() {
