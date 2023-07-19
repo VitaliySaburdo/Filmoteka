@@ -49,7 +49,7 @@ pagination.on('afterMove', event => {
     galleryEl.innerHTML = '';
     renderGalleryFilms(data.results);
   });
-  // backToTop();
+  backToTop();
 });
 
 export function backToTop() {

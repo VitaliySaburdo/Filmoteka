@@ -80,7 +80,6 @@ export function libraryStorage(movieData) {
   }
 }
 
-handleClickWatched();
 
 function handleClickWatched() {
   renderSavedFilms('watch');
@@ -89,6 +88,8 @@ function handleClickWatched() {
     queueButton.classList.remove('btn__active');
   }
 }
+handleClickWatched();
+
 
 function handleClickQueue() {
   renderSavedFilms('queue');
@@ -105,10 +106,10 @@ function clearFilmList() {
 }
 
 function renderSavedFilms(name) {
-  clearFilmList();
+  // clearFilmList();
   const storageMovies = getFromStorage(name);
   if (storageMovies) {
-    renderLibrary(storageMovies, name);
+    renderLibrary(storageMovies);
   }
 }
 
@@ -134,11 +135,7 @@ function renderLibrary(data) {
     .join('');
 
   if (libraryEl) {
-    if (markup) {
-      libraryEl.innerHTML = markup;
-    } else {
-      libraryEl.innerHTML = `<h2 class='library__title'>Sorry, you don't have movies in your database</h2>`;
-    }
+    libraryEl.innerHTML = markup || `<h2 class='library__title'>Sorry, you don't have movies in your database</h2>`;
   }
 }
 
