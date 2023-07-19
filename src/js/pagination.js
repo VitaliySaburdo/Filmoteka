@@ -45,6 +45,7 @@ pagination.on('afterMove', event => {
 
   ApiService.fetchTrendingMovie().then(data => {
     data;
+    console.log(data);
     galleryEl.innerHTML = '';
     renderGalleryFilms(data.results);
   });
