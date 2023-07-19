@@ -134,9 +134,11 @@ function renderLibrary(data, name) {
     .join('');
 
   if (libraryEl) {
-    libraryEl.innerHTML =
-      markup ||
-      `<h2 class = class="library__title">Sorry you don't have movies in your database</h2>`;
+    if (markup) {
+      libraryEl.innerHTML = markup;
+    } else {
+      libraryEl.innerHTML = `<h2 class='library__title'>Sorry, you don't have movies in your database</h2>`;
+    }
   }
 }
 
