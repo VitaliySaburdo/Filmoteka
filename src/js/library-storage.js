@@ -92,6 +92,7 @@ handleClickWatched();
 
 
 function handleClickQueue() {
+  clearFilmList();
   renderSavedFilms('queue');
   if (libraryEl) {
     watchedButton.classList.remove('btn__active');
@@ -106,14 +107,15 @@ function clearFilmList() {
 }
 
 function renderSavedFilms(name) {
-  // clearFilmList();
   const storageMovies = getFromStorage(name);
   if (storageMovies) {
-    renderLibrary(storageMovies);
+    renderLibrary(storageMovies, name);
+  } else {
+    renderLibrary([], name)
   }
 }
 
-function renderLibrary(data) {
+function renderLibrary(data, name) {
   const markup = data
     .map(
       ({
@@ -135,7 +137,7 @@ function renderLibrary(data) {
     .join('');
 
   if (libraryEl) {
-    libraryEl.innerHTML = markup || `<h2 class='library__title'>Sorry, you don't have movies in your database</h2>`;
+    libraryEl.innerHTML = markup || `<h2 class='library__title'>Sorry, you don't have movies in your ${name}</h2>`;
   }
 }
 
