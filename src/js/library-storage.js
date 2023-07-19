@@ -135,7 +135,8 @@ function renderLibrary(data, name) {
 
   if (libraryEl) {
     libraryEl.innerHTML =
-      markup || "Sorry you don't have movies in your database";
+      markup ||
+      `<h2 class = class="library__title">Sorry you don't have movies in your database</h2>`;
   }
 }
 
