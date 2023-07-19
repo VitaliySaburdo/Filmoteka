@@ -1,4 +1,4 @@
-import newsApiService from './fetch';
+import newsApiService from './apiServices';
 import { murkupMovie } from './markupModal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';

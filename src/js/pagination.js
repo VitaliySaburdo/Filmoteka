@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination';
 
-import newsApiService from './fetch';
+import newsApiService from './apiServices';
 import { renderGalleryFilms } from './gallery';
 
 const ApiService = new newsApiService();

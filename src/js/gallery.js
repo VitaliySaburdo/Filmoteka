@@ -1,4 +1,4 @@
-import newsApiService from './fetch';
+import newsApiService from './apiServices';
 import { addToStorage, getFromStorage } from './localStorage';
 
 const imageGallaryRef = document.querySelector('.gallery-list');

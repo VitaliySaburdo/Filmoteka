@@ -1,4 +1,4 @@
-import './js/fetch';
+import './js/apiServices';
 import './js/localStorage';
 import './js/library-storage';
 import './js/modal';
