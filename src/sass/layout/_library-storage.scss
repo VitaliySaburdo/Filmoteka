@@ -8,8 +8,7 @@
   margin-right: auto;
   justify-content: center;
   align-items: center;
-  min-height: 650px;
-  height: 400px;
+
   @include mq(tab) {
     display: flex;
     flex-wrap: wrap;
@@ -25,6 +24,8 @@
 }
 
 .library__background {
+  min-height: 600px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
