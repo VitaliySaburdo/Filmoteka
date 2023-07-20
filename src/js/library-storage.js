@@ -17,7 +17,6 @@ if (libraryEl) {
 }
 
 export function libraryStorage(movieData) {
-  const cartItem = document.querySelector(`[data-id="${movieData.id}"]`);
   const filmObject = JSON.stringify(movieData);
 
   const watchBtn = document.querySelector('.js-watched');
