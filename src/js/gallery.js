@@ -64,6 +64,7 @@ function renderGalleryFilms(data) {
     const genresInfo = getFromStorage('genresList');
 
     const genreArray = [];
+
     for (const genre_id of genre_ids) {
       for (const genreInfo of genresInfo) {
         if (genreInfo.id === genre_id) {
@@ -71,8 +72,9 @@ function renderGalleryFilms(data) {
         }
       }
     }
+    console.log(genreArray.length);
     if (genreArray.length > 2) {
-      return genreArray.slice(0, 2).join(', ') + ', Other';
+      return genreArray.slice(0, 2).join(', ') + ' and Other';
     }
     return genreArray.join(', ');
   }
