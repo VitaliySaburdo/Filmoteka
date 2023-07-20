@@ -4,20 +4,29 @@ import {
   removeFromStorage,
 } from './localStorage';
 
-export const libraryEl = document.querySelector('.library__list');
+export const libraryEl = document.querySelector(
+  '.library__list'
+);
 const queueButton = document.querySelector('.queue_button');
-const watchedButton = document.querySelector('.watched_button');
+const watchedButton = document.querySelector(
+  '.watched_button'
+);
 
 let queueMovie = getFromStorage('queue') || [];
 let watchMovie = getFromStorage('watch') || [];
 
 if (libraryEl) {
-  watchedButton.addEventListener('click', handleClickWatched);
+  watchedButton.addEventListener(
+    'click',
+    handleClickWatched
+  );
   queueButton.addEventListener('click', handleClickQueue);
 }
 
 export function libraryStorage(movieData) {
-  const cartItem = document.querySelector(`[data-id="${movieData.id}"]`);
+  const cartItem = document.querySelector(
+    `[data-id="${movieData.id}"]`
+  );
   const filmObject = JSON.stringify(movieData);
 
   const watchBtn = document.querySelector('.js-watched');
@@ -46,7 +55,9 @@ export function libraryStorage(movieData) {
       if (watchMovie.find(e => e.id === movieData.id)) {
         watchBtn.classList.remove('button--accent');
         watchBtn.textContent = 'ADD TO WATCHED';
-        watchMovie = watchMovie.filter(e => e.id !== movieData.id);
+        watchMovie = watchMovie.filter(
+          e => e.id !== movieData.id
+        );
         if (cartItem) {
           removeFromStorage('watch');
           renderLibrary(watchMovie);
@@ -65,7 +76,9 @@ export function libraryStorage(movieData) {
       if (queueMovie.find(e => e.id === movieData.id)) {
         queueBtn.classList.remove('button--accent');
         queueBtn.textContent = 'ADD TO QUEUE';
-        queueMovie = queueMovie.filter(e => e.id !== movieData.id);
+        queueMovie = queueMovie.filter(
+          e => e.id !== movieData.id
+        );
         if (cartItem) {
           removeFromStorage('queue');
           renderLibrary(queueMovie);
@@ -80,7 +93,6 @@ export function libraryStorage(movieData) {
   }
 }
 
-
 function handleClickWatched() {
   renderSavedFilms('watch');
   if (libraryEl) {
@@ -89,7 +101,6 @@ function handleClickWatched() {
   }
 }
 handleClickWatched();
-
 
 function handleClickQueue() {
   clearFilmList();
@@ -111,7 +122,7 @@ function renderSavedFilms(name) {
   if (storageMovies) {
     renderLibrary(storageMovies, name);
   } else {
-    renderLibrary([], name)
+    renderLibrary([], name);
   }
 }
 
@@ -137,7 +148,11 @@ function renderLibrary(data, name) {
     .join('');
 
   if (libraryEl) {
-    libraryEl.innerHTML = markup || `<h2 class='library__title'>Sorry, you don't have movies in your ${name}</h2>`;
+    libraryEl.innerHTML =
+      markup ||
+      `<div class="library__background">
+      <h2 class='library__title'>Sorry, you don't have movies in your ${name}</h2>
+      </div>`;
   }
 }
 

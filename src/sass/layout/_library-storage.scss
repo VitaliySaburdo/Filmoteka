@@ -1,3 +1,41 @@
+.library__list {
+  position: relative;
+  display: grid;
+  row-gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+  min-height: 650px;
+  height: 400px;
+  @include mq(tab) {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 32px;
+    column-gap: 31px;
+  }
+  @include mq(desk) {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 32px;
+    column-gap: 15px;
+  }
+}
+
+.library__background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../images/library-storage/cinema.jpg');
+  width: 100%;
+  height: 100%;
+}
+
 .library__title {
   text-align: center;
 }
