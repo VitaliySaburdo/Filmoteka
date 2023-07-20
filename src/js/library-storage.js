@@ -64,6 +64,15 @@ export function libraryStorage(movieData) {
         renderLibrary(movieList, type);
       }
     }
+    if (libraryEl) {
+      if (type === 'watch') {
+        watchedButton.classList.add('btn__active');
+        queueButton.classList.remove('btn__active');
+      } else if (type === 'queue') {
+        watchedButton.classList.remove('btn__active');
+        queueButton.classList.add('btn__active');
+      }
+    }
   }
 }
 
@@ -77,7 +86,6 @@ function handleClickWatched() {
 handleClickWatched();
 
 function handleClickQueue() {
-  libraryEl.innerHTML = '';
   renderSavedFilms('queue');
   if (libraryEl) {
     watchedButton.classList.remove('btn__active');
