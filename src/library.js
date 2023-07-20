@@ -1,5 +1,5 @@
-import './js/apiServices';
-import './js/localStorage';
+import './js/api-services';
+import './js/local-storage';
 import './js/library-storage';
 import './js/modal';
 import './js/scroll';

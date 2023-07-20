@@ -1,5 +1,5 @@
-import newsApiService from './apiServices';
-import { addToStorage, getFromStorage } from './localStorage';
+import newsApiService from './api-services';
+import { addToStorage, getFromStorage } from './local-storage';
 
 const imageGalleryRef = document.querySelector('.gallery-list');
 

@@ -2,7 +2,7 @@ import {
   addToStorage,
   getFromStorage,
   removeFromStorage,
-} from './localStorage';
+} from './local-storage';
 
 export const libraryEl = document.querySelector('.library__list');
 const queueButton = document.querySelector('.queue_button');

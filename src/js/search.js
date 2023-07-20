@@ -1,4 +1,4 @@
-import NewsApiService from './apiServices';
+import NewsApiService from './api-services';
 import { renderGalleryFilms } from './gallery';
 import Pagination from 'tui-pagination';
 import Notiflix from 'notiflix';
