@@ -1,12 +1,11 @@
 import newsApiService from './apiServices';
 import { addToStorage, getFromStorage } from './localStorage';
 
-const imageGallaryRef = document.querySelector('.gallery-list');
+const imageGalleryRef = document.querySelector('.gallery-list');
 
 const ApiService = new newsApiService();
 
 ApiService.getGenres().then(({ genres }) => {
-  //Добавление списка жанров в localStorage
   addToStorage('genresList', genres);
 });
 
@@ -36,7 +35,7 @@ function renderGalleryFilms(data) {
     )
     .join('');
 
-  imageGallaryRef.insertAdjacentHTML('beforeend', markup);
+  imageGalleryRef.insertAdjacentHTML('beforeend', markup);
 
   function renderImg(poster_path) {
     if (poster_path) {
@@ -64,18 +63,18 @@ function renderGalleryFilms(data) {
   function changeGenre(genre_ids) {
     const genresInfo = getFromStorage('genresList');
 
-    const genrArrey = [];
+    const genreArray = [];
     for (const genre_id of genre_ids) {
-      for (const genrInfo of genresInfo) {
-        if (genrInfo.id === genre_id) {
-          genrArrey.push(genrInfo.name);
+      for (const genreInfo of genresInfo) {
+        if (genreInfo.id === genre_id) {
+          genreArray.push(genreInfo.name);
         }
       }
     }
-    if (genrArrey.length > 2) {
-      return genrArrey.slice(0, 2).join(', ') + ', Other';
+    if (genreArray.length > 2) {
+      return genreArray.slice(0, 2).join(', ') + ', Other';
     }
-    return genrArrey.join(', ');
+    return genreArray.join(', ');
   }
 }
 
