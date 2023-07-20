@@ -23,19 +23,18 @@ export function libraryStorage(movieData) {
   const watchBtn = document.querySelector('.js-watched');
   const queueBtn = document.querySelector('.js-queue');
 
-  if (
-    localStorage.getItem('watch') !== null &&
-    localStorage.getItem('watch').includes(filmObject)
-  ) {
-    watchBtn.textContent = 'REMOVE FROM WATCHED';
-    watchBtn.classList.add('button--accent');
-  }
-  if (
-    localStorage.getItem('queue') !== null &&
-    localStorage.getItem('queue').includes(filmObject)
-  ) {
-    queueBtn.textContent = 'REMOVE FROM QUEUE';
-    watchBtn.classList.add('button--accent');
+  setButtonStatus('watch', watchBtn);
+  setButtonStatus('queue', queueBtn);
+
+  function setButtonStatus(type, button) {
+    if (
+      localStorage.getItem(type) !== null &&
+      localStorage.getItem(type).includes(filmObject)
+    ) {
+      button.textContent =
+        type === 'watch' ? 'REMOVE FROM WATCHED' : 'REMOVE FROM QUEUE';
+      button.classList.add('button--accent');
+    }
   }
 
   watchBtn.addEventListener('click', () =>
@@ -55,17 +54,16 @@ export function libraryStorage(movieData) {
         button.textContent =
           type === 'watch' ? 'ADD TO WATCHED' : 'ADD TO QUEUE';
         movieList.splice(movieIndex, 1);
-        if (cartItem) {
-          removeFromStorage(type);
-          renderLibrary(movieList, type);
-        }
+        removeFromStorage(type);
+        renderLibrary(movieList, type);
       } else {
         button.textContent =
           type === 'watch' ? 'REMOVE FROM WATCHED' : 'REMOVE FROM QUEUE';
         button.classList.add('button--accent');
         movieList.push(movieData);
+        addToStorage(type, movieList);
+        renderLibrary(movieList, type);
       }
-      addToStorage(type, movieList);
     }
   }
 }
