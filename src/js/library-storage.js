@@ -77,17 +77,11 @@ function handleClickWatched() {
 handleClickWatched();
 
 function handleClickQueue() {
-  clearFilmList();
+  libraryEl.innerHTML = '';
   renderSavedFilms('queue');
   if (libraryEl) {
     watchedButton.classList.remove('btn__active');
     queueButton.classList.add('btn__active');
-  }
-}
-
-function clearFilmList() {
-  if (libraryEl) {
-    libraryEl.innerHTML = '';
   }
 }
 
