@@ -1,5 +1,5 @@
 import newsApiService from './apiServices';
-import { murkupMovie } from './markupModal';
+import { murkupMovie } from './markup-modal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
