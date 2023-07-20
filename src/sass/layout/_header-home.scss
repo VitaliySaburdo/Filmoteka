@@ -235,3 +235,16 @@
   color: var(--cl-ivory);
   margin-left: 2px;
 }
+
+.header__icon {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
