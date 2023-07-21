@@ -14,6 +14,7 @@ ApiService.fetchTrendingMovie().then(data => {
 });
 
 function renderGalleryFilms(data) {
+  imageGalleryRef.innerHTML = '';
   const markup = data
     .map(
       ({
@@ -72,7 +73,6 @@ function renderGalleryFilms(data) {
         }
       }
     }
-    console.log(genreArray.length);
     if (genreArray.length > 2) {
       return genreArray.slice(0, 2).join(', ') + ' and Other';
     }
