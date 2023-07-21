@@ -28,6 +28,7 @@ export function generatePagination() {
       ApiService.fetchTrendingMovie().then(data => {
         renderGalleryFilms(data.results);
       });
+      backToTop();
     });
     return li;
   };
@@ -91,6 +92,7 @@ nextButton.addEventListener('click', () => {
     ApiService.fetchTrendingMovie().then(data => {
       renderGalleryFilms(data.results);
     });
+    backToTop();
   }
 });
 
@@ -102,5 +104,13 @@ prevButton.addEventListener('click', () => {
     ApiService.fetchTrendingMovie().then(data => {
       renderGalleryFilms(data.results);
     });
+    backToTop();
   }
 });
+
+export function backToTop() {
+  if (window.pageYOffset > 0) {
+    window.scrollBy(0, -30);
+    setTimeout(backToTop, 0);
+  }
+}
