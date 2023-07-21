@@ -1,5 +1,4 @@
 import newsApiService from './api-services';
-import { renderGalleryFilms } from './gallery';
 
 const ApiService = new newsApiService();
 
@@ -109,8 +108,7 @@ prevButton.addEventListener('click', () => {
 });
 
 export function backToTop() {
-  if (window.pageYOffset > 0) {
+  if (window > 0) {
     window.scrollBy(0, -30);
-    setTimeout(backToTop, 0);
   }
 }

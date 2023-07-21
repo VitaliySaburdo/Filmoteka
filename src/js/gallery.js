@@ -79,5 +79,3 @@ function renderGalleryFilms(data) {
     return genreArray.join(', ');
   }
 }
-
-export { renderGalleryFilms };
