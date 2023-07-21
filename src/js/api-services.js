@@ -9,7 +9,7 @@ export default class NewsApiService {
     this.page = 1;
     this.lang = '';
   }
-  // Запрос популярных фильмов на главную страницу
+
   async fetchTrendingMovie() {
     try {
       const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.currentPage}`;
@@ -20,7 +20,6 @@ export default class NewsApiService {
     }
   }
 
-  // Запрос детальной информации по id для модалки
   async getFilmDetails(id) {
     try {
       const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
@@ -31,7 +30,6 @@ export default class NewsApiService {
     }
   }
 
-  // Запрос по поиску
   async getFilmOnSearch() {
     try {
       const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${this.page}`;
@@ -42,7 +40,6 @@ export default class NewsApiService {
     }
   }
 
-  // Запрос информации по жанрам
   async getGenres() {
     try {
       const url = `${BASE_URL}genre/movie/list?api_key=${API_KEY}`;
