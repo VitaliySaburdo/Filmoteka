@@ -33,4 +33,5 @@ async function onSubmit(e) {
       });
     }
   });
+  e.currentTarget.elements.searchQuery.value = '';
 }
