@@ -15,7 +15,7 @@ ApiService.fetchTrendingMovie().then(data => {
 
 function renderGalleryFilms(data) {
   imageGalleryRef.innerHTML = '';
-  const markup = data
+  const markupGallery = data
     .map(
       ({
         id,
@@ -36,7 +36,7 @@ function renderGalleryFilms(data) {
     )
     .join('');
 
-  imageGalleryRef.insertAdjacentHTML('beforeend', markup);
+  imageGalleryRef.insertAdjacentHTML('beforeend', markupGallery);
 
   function renderImg(poster_path) {
     if (poster_path) {
