@@ -5,6 +5,7 @@ const ApiService = new newsApiService();
 
 const itemsPerPage = 1;
 let totalItems = 500;
+let query;
 
 export function generatePagination(query, totalItems) {
   const paginationContainer = document.querySelector('.pagination');
@@ -23,15 +24,15 @@ export function generatePagination(query, totalItems) {
     }
     li.addEventListener('click', () => {
       ApiService.currentPage = pageNumber;
-      generatePagination();
       if (query) {
-        generatePagination(query,totalItems);
+        generatePagination(query, totalItems);
         ApiService.searchQuery = query;
         ApiService.getFilmOnSearch().then(data => {
           renderGalleryFilms(data.results);
         });
       } else {
         ApiService.fetchTrendingMovie().then(data => {
+          generatePagination('', totalItems);
           renderGalleryFilms(data.results);
         });
       }
@@ -85,20 +86,26 @@ export function generatePagination(query, totalItems) {
       paginationFragment.appendChild(createPageElement(totalItems, false));
     }
   }
-
   paginationContainer.appendChild(paginationFragment);
 }
-
-generatePagination();
 
 const nextButton = document.querySelector('.next');
 nextButton.addEventListener('click', () => {
   if (ApiService.currentPage < Math.ceil(totalItems / itemsPerPage)) {
     ApiService.currentPage++;
-    generatePagination();
-    ApiService.fetchTrendingMovie().then(data => {
-      renderGalleryFilms(data.results);
-    });
+    if (query) {
+      generatePagination(query, totalItems);
+      ApiService.searchQuery = query;
+      ApiService.getFilmOnSearch().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    } else {
+      generatePagination('', totalItems);
+      ApiService.fetchTrendingMovie().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    }
+
     backToTop();
   }
 });
@@ -107,10 +114,18 @@ const prevButton = document.querySelector('.prev');
 prevButton.addEventListener('click', () => {
   if (ApiService.currentPage > 1) {
     ApiService.currentPage--;
-    generatePagination();
-    ApiService.fetchTrendingMovie().then(data => {
-      renderGalleryFilms(data.results);
-    });
+    if (query) {
+      generatePagination(query, totalItems);
+      ApiService.searchQuery = query;
+      ApiService.getFilmOnSearch().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    } else {
+      generatePagination('', totalItems);
+      ApiService.fetchTrendingMovie().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    }
     backToTop();
   }
 });

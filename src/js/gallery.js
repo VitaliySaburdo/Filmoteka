@@ -12,7 +12,7 @@ ApiService.getGenres().then(({ genres }) => {
 
 ApiService.fetchTrendingMovie().then(data => {
   renderGalleryFilms(data.results);
-  generatePagination('', data.total_pages);
+  generatePagination('', 500);
 });
 
 export function renderGalleryFilms(data) {
