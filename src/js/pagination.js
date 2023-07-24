@@ -87,13 +87,13 @@ export function generatePagination(query, totalItems) {
     }
   }
   paginationContainer.appendChild(paginationFragment);
-}
 
-const nextButton = document.querySelector('.next');
+  const nextButton = document.querySelector('.next');
 nextButton.addEventListener('click', () => {
   if (ApiService.currentPage < Math.ceil(totalItems / itemsPerPage)) {
     ApiService.currentPage++;
     if (query) {
+      console.log(query);
       generatePagination(query, totalItems);
       ApiService.searchQuery = query;
       ApiService.getFilmOnSearch().then(data => {
@@ -115,6 +115,7 @@ prevButton.addEventListener('click', () => {
   if (ApiService.currentPage > 1) {
     ApiService.currentPage--;
     if (query) {
+      console.log(query);
       generatePagination(query, totalItems);
       ApiService.searchQuery = query;
       ApiService.getFilmOnSearch().then(data => {
@@ -129,6 +130,8 @@ prevButton.addEventListener('click', () => {
     backToTop();
   }
 });
+}
+
 
 export function backToTop() {
   if (window.pageYOffset > 0) {
