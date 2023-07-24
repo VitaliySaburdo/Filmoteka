@@ -1,5 +1,4 @@
-// Функция для отрисовки модального окна
-const murkupMovie = ({
+const markupMovie = ({
   poster_path,
   popularity,
   vote_average,
@@ -69,7 +68,6 @@ const murkupMovie = ({
 </div>`;
 };
 
-// Генерирование жанра
 
 function genresConverting(genres) {
   if (genres.length) {
@@ -82,11 +80,11 @@ function genresConverting(genres) {
   }
   return 'N/A';
 }
-// Генерирование картинки
+
 function imgRender(poster_path) {
   if (poster_path) {
     return `https://image.tmdb.org/t/p/w500${poster_path}`;
   }
   return `https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png?20170513175923`;
 }
-export { murkupMovie };
+export { markupMovie };

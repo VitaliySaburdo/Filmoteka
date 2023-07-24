@@ -1,5 +1,5 @@
 import newsApiService from './api-services';
-import { murkupMovie } from './markup-modal';
+import { markupMovie } from './markup-modal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
@@ -19,12 +19,12 @@ if (libraryEl) {
 
 function onOpenModal(event) {
   const selectedMovie = event.target.closest('.gallery__item');
-  // Получаю id
+
   const selectedMovieId = selectedMovie.getAttribute('data-id');
   if (event.target.nodeName !== 'BUTTON') {
-    // Открываю окно
+
     openModal();
-    //Получение данных о фильме в модалку
+    
     newData
       .getFilmDetails(selectedMovieId)
       .then(data => {
@@ -38,10 +38,9 @@ function onOpenModal(event) {
 }
 
 function renderModalContent(data) {
-  cardContainer.innerHTML = murkupMovie(data);
+  cardContainer.innerHTML = markupMovie(data);
 }
 function openModal() {
-  // Тут бы спинер добавить
   setTimeout(() => {
     modal.classList.remove('is-hidden');
     scrollController.disabledScroll();
