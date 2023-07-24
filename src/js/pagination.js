@@ -4,8 +4,6 @@ import { renderGalleryFilms } from './gallery';
 const ApiService = new newsApiService();
 
 const itemsPerPage = 1;
-let totalItems = 500;
-let query;
 
 export function generatePagination(query, totalItems) {
   const paginationContainer = document.querySelector('.pagination');
@@ -89,53 +87,55 @@ export function generatePagination(query, totalItems) {
   paginationContainer.appendChild(paginationFragment);
 
   const nextButton = document.querySelector('.next');
-nextButton.addEventListener('click', () => {
-  if (ApiService.currentPage < Math.ceil(totalItems / itemsPerPage)) {
-    ApiService.currentPage++;
-    if (query) {
-      console.log(query);
-      generatePagination(query, totalItems);
-      ApiService.searchQuery = query;
-      ApiService.getFilmOnSearch().then(data => {
-        renderGalleryFilms(data.results);
-      });
-    } else {
-      generatePagination('', totalItems);
-      ApiService.fetchTrendingMovie().then(data => {
-        renderGalleryFilms(data.results);
-      });
+  nextButton.addEventListener('click', () => {
+    if (ApiService.currentPage > totalItems) {
+      ApiService.currentPage++;
+      if (query) {
+        generatePagination(query, totalItems);
+        ApiService.searchQuery = query;
+        ApiService.getFilmOnSearch().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      } else {
+        generatePagination('', totalItems);
+        ApiService.fetchTrendingMovie().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      }
+
+      backToTop();
     }
-
-    backToTop();
   }
-});
+  );
 
-const prevButton = document.querySelector('.prev');
-prevButton.addEventListener('click', () => {
-  if (ApiService.currentPage > 1) {
-    ApiService.currentPage--;
-    if (query) {
-      console.log(query);
-      generatePagination(query, totalItems);
-      ApiService.searchQuery = query;
-      ApiService.getFilmOnSearch().then(data => {
-        renderGalleryFilms(data.results);
-      });
-    } else {
-      generatePagination('', totalItems);
-      ApiService.fetchTrendingMovie().then(data => {
-        renderGalleryFilms(data.results);
-      });
+  const prevButton = document.querySelector('.prev');
+  prevButton.addEventListener('click', () => {
+    if (ApiService.currentPage > 1) {
+      ApiService.currentPage--;
+      if (query) {
+        console.log(query);
+        generatePagination(query, totalItems);
+        ApiService.searchQuery = query;
+        ApiService.getFilmOnSearch().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      } else {
+        generatePagination('', totalItems);
+        ApiService.fetchTrendingMovie().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      }
+      backToTop();
     }
-    backToTop();
-  }
-});
-}
+  });
 
 
-export function backToTop() {
+  function backToTop() {
   if (window.pageYOffset > 0) {
     window.scrollBy(0, -30);
     setTimeout(backToTop, 0);
   }
 }
+}
+
+
