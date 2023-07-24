@@ -23,9 +23,9 @@ export function generatePagination(query, totalItems) {
     }
     li.addEventListener('click', () => {
       ApiService.currentPage = pageNumber;
-      console.log(ApiService.currentPage);
       generatePagination();
       if (query) {
+        generatePagination(query,totalItems);
         ApiService.searchQuery = query;
         ApiService.getFilmOnSearch().then(data => {
           renderGalleryFilms(data.results);

@@ -33,7 +33,6 @@ export default class NewsApiService {
   async getFilmOnSearch() {
     try {
       console.log(this.searchQuery);
-
       const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${this.currentPage}`;
       const response = await axios.get(url);
       return response.data;
