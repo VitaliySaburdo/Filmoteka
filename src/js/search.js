@@ -22,10 +22,11 @@ async function onSubmit(e) {
     return;
   }
 
+  ApiService.currentPage = 1;
+
   ApiService.getFilmOnSearch().then(data => {
     if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
-      ApiService.currentPage = 1;
       renderGalleryFilms(data.results);
       generatePagination(ApiService.searchQuery, data.total_pages);
     } else {
