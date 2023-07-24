@@ -86,7 +86,7 @@ export function generatePagination(query, totalItems) {
 
   const nextButton = document.querySelector('.next');
   nextButton.addEventListener('click', () => {
-    if (ApiService.currentPage > totalItems) {
+    if (ApiService.currentPage < totalItems) {
       ApiService.currentPage++;
       if (query) {
         generatePagination(query, totalItems);
