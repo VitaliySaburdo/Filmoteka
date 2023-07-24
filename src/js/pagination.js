@@ -3,8 +3,6 @@ import { renderGalleryFilms } from './gallery';
 
 const ApiService = new newsApiService();
 
-const itemsPerPage = 1;
-
 export function generatePagination(query, totalItems) {
   const paginationContainer = document.querySelector('.pagination');
   paginationContainer.innerHTML = '';
