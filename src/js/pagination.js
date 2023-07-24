@@ -4,9 +4,9 @@ import { renderGalleryFilms } from './gallery';
 const ApiService = new newsApiService();
 
 const itemsPerPage = 1;
-const totalItems = 500;
+let totalItems = 500;
 
-export function generatePagination() {
+export function generatePagination(query, totalItems) {
   const paginationContainer = document.querySelector('.pagination');
   paginationContainer.innerHTML = '';
 
@@ -25,9 +25,16 @@ export function generatePagination() {
       ApiService.currentPage = pageNumber;
       console.log(ApiService.currentPage);
       generatePagination();
-      ApiService.fetchTrendingMovie().then(data => {
-        renderGalleryFilms(data.results);
-      });
+      if (query) {
+        ApiService.searchQuery = query;
+        ApiService.getFilmOnSearch().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      } else {
+        ApiService.fetchTrendingMovie().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      }
       backToTop();
     });
     return li;

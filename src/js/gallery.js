@@ -1,5 +1,6 @@
 import newsApiService from './api-services';
 import { addToStorage, getFromStorage } from './local-storage';
+import { generatePagination } from './pagination';
 
 const imageGalleryRef = document.querySelector('.gallery-list');
 
@@ -11,6 +12,7 @@ ApiService.getGenres().then(({ genres }) => {
 
 ApiService.fetchTrendingMovie().then(data => {
   renderGalleryFilms(data.results);
+  generatePagination('', data.total_pages);
 });
 
 export function renderGalleryFilms(data) {

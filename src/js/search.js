@@ -1,6 +1,7 @@
 import NewsApiService from './api-services';
 import { renderGalleryFilms } from './gallery';
 import Notiflix from 'notiflix';
+import { generatePagination } from './pagination';
 
 const ApiService = new NewsApiService();
 const searchForm = document.querySelector('#header-form');
@@ -24,7 +25,9 @@ async function onSubmit(e) {
   ApiService.getFilmOnSearch().then(data => {
     if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
+      ApiService.currentPage = 1;
       renderGalleryFilms(data.results);
+      generatePagination(ApiService.searchQuery, data.total_pages);
     } else {
       return Notiflix.Notify.info(`${ApiService.searchQuery} movie not found`, {
         position: 'center-top',
