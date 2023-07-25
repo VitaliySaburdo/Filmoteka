@@ -6,7 +6,7 @@ const ApiService = new newsApiService();
 let totalItems;
 let query;
 
-export function generatePagination(querySearch, itemsCount, firstPage) {
+export function generatePagination(querySearch, itemsCount, page) {
   totalItems = itemsCount;
   query = querySearch;
 
@@ -26,7 +26,7 @@ export function generatePagination(querySearch, itemsCount, firstPage) {
     return;
   }
 
-  if (firstPage) {
+  if (page) {
     ApiService.currentPage = 1;
   }
 
@@ -39,7 +39,18 @@ export function generatePagination(querySearch, itemsCount, firstPage) {
     }
     li.addEventListener('click', () => {
       ApiService.currentPage = pageNumber;
-      fetchAndRenderFilms(query);
+      if (query) {
+        generatePagination(query, totalItems);
+        ApiService.searchQuery = query;
+        ApiService.getFilmOnSearch().then(data => {
+          renderGalleryFilms(data.results);
+        });
+      } else {
+        ApiService.fetchTrendingMovie().then(data => {
+          generatePagination('', totalItems);
+          renderGalleryFilms(data.results);
+        });
+      }
       backToTop();
     });
     return li;
@@ -97,7 +108,19 @@ const nextButton = document.querySelector('.next');
 nextButton.addEventListener('click', () => {
   if (ApiService.currentPage < totalItems) {
     ApiService.currentPage++;
-    fetchAndRenderFilms(query);
+    if (query) {
+      generatePagination(query, totalItems);
+      ApiService.searchQuery = query;
+      ApiService.getFilmOnSearch().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    } else {
+      generatePagination('', totalItems);
+      ApiService.fetchTrendingMovie().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    }
+
     backToTop();
   }
 });
@@ -106,23 +129,22 @@ const prevButton = document.querySelector('.prev');
 prevButton.addEventListener('click', () => {
   if (ApiService.currentPage > 1) {
     ApiService.currentPage--;
-    fetchAndRenderFilms(query);
+    if (query) {
+      generatePagination(query, totalItems);
+      ApiService.searchQuery = query;
+      ApiService.getFilmOnSearch().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    } else {
+      generatePagination('', totalItems);
+      ApiService.fetchTrendingMovie().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    }
     backToTop();
   }
 });
 
-function fetchAndRenderFilms(query) {
-  if (query) {
-    ApiService.searchQuery = query;
-    return ApiService.getFilmOnSearch().then(data => {
-      renderGalleryFilms(data.results);
-    });
-  } else {
-    return ApiService.fetchTrendingMovie().then(data => {
-      renderGalleryFilms(data.results);
-    });
-  }
-}
 function backToTop() {
   if (window.pageYOffset > 0) {
     window.scrollBy(0, -30);
