@@ -14,6 +14,15 @@ export function generatePagination(querySearch, itemsCount, page) {
   paginationContainer.innerHTML = '';
 
   if (totalItems <= 1) {
+    document.querySelector('.next').style.display = 'none';
+    document.querySelector('.prev').style.display = 'none';
+    return;
+  } else {
+    document.querySelector('.next').style.display = 'block';
+    document.querySelector('.prev').style.display = 'block';
+  }
+
+  if (totalItems <= 1) {
     return;
   }
 
