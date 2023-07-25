@@ -28,7 +28,11 @@ async function onSubmit(e) {
     if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
       renderGalleryFilms(data.results);
-      generatePagination(ApiService.searchQuery, data.total_pages);
+      generatePagination(
+        ApiService.searchQuery,
+        data.total_pages,
+        ApiService.currentPage
+      );
     } else {
       return Notiflix.Notify.info(`${ApiService.searchQuery} movie not found`, {
         position: 'center-top',

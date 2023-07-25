@@ -6,7 +6,7 @@ const ApiService = new newsApiService();
 let totalItems;
 let query;
 
-export function generatePagination(querySearch, itemsCount) {
+export function generatePagination(querySearch, itemsCount, page) {
   totalItems = itemsCount;
   query = querySearch;
 
@@ -15,6 +15,10 @@ export function generatePagination(querySearch, itemsCount) {
 
   if (totalItems <= 1) {
     return;
+  }
+
+  if (page) {
+    ApiService.currentPage = 1;
   }
 
   const createPageElement = (pageNumber, isActive) => {
