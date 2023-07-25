@@ -120,7 +120,6 @@ nextButton.addEventListener('click', () => {
         renderGalleryFilms(data.results);
       });
     }
-
     backToTop();
   }
 });

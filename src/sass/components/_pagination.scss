@@ -27,8 +27,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(255, 107, 8, 1);
-  color: #fff;
+  background-color: var(--cl-accent);
+  color: var(--cl-white);
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -40,7 +40,7 @@
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: rgba(247, 247, 247, 1);
+  background-color: var(--cl-secondary);
   &.next {
     margin-left: 6px;
   }
@@ -49,26 +49,6 @@
   }
 }
 
-// .page-btn:hover {
-//   background-color: rgb(230, 230, 230);
-// }
-
-// .is-hidden {
-//   display: none;
-// }
-
-// .arrow {
-//   width: 16px;
-// }
-
-// .pagination-section.dark {
-//   color: bisque;
-// }
-
-// .pagination-section.dark button {
-//   background-color: bisque;
-// }
-
-// .pagination-section.dark button:hover {
-//   background-color: rgba(255, 228, 196, 0.863);
-// }
+.page-btn:hover {
+  background-color: var(--hw-color);
+}
