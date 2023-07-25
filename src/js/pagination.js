@@ -9,6 +9,7 @@ let query;
 export function generatePagination(querySearch, itemsCount) {
   totalItems = itemsCount;
   query = querySearch;
+
   const paginationContainer = document.querySelector('.pagination');
   paginationContainer.innerHTML = '';
 
