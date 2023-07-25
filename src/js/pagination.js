@@ -3,7 +3,12 @@ import { renderGalleryFilms } from './gallery';
 
 const ApiService = new newsApiService();
 
-export function generatePagination(query, totalItems) {
+let totalItems;
+let query;
+
+export function generatePagination(querySearch, itemsCount) {
+  totalItems = itemsCount;
+  query = querySearch;
   const paginationContainer = document.querySelector('.pagination');
   paginationContainer.innerHTML = '';
 
@@ -83,52 +88,53 @@ export function generatePagination(query, totalItems) {
     }
   }
   paginationContainer.appendChild(paginationFragment);
+}
 
-  const nextButton = document.querySelector('.next');
-  nextButton.addEventListener('click', () => {
-    if (ApiService.currentPage < totalItems) {
-      ApiService.currentPage++;
-      if (query) {
-        generatePagination(query, totalItems);
-        ApiService.searchQuery = query;
-        ApiService.getFilmOnSearch().then(data => {
-          renderGalleryFilms(data.results);
-        });
-      } else {
-        generatePagination('', totalItems);
-        ApiService.fetchTrendingMovie().then(data => {
-          renderGalleryFilms(data.results);
-        });
-      }
-
-      backToTop();
+const nextButton = document.querySelector('.next');
+nextButton.addEventListener('click', () => {
+  if (ApiService.currentPage < totalItems) {
+    ApiService.currentPage += 1;
+    console.log('Next Clicked. New currentPage:', ApiService.currentPage);
+    if (query) {
+      generatePagination(query, totalItems);
+      ApiService.searchQuery = query;
+      ApiService.getFilmOnSearch().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    } else {
+      generatePagination('', totalItems);
+      ApiService.fetchTrendingMovie().then(data => {
+        renderGalleryFilms(data.results);
+      });
     }
-  });
 
-  const prevButton = document.querySelector('.prev');
-  prevButton.addEventListener('click', () => {
-    if (ApiService.currentPage > 1) {
-      ApiService.currentPage--;
-      if (query) {
-        generatePagination(query, totalItems);
-        ApiService.searchQuery = query;
-        ApiService.getFilmOnSearch().then(data => {
-          renderGalleryFilms(data.results);
-        });
-      } else {
-        generatePagination('', totalItems);
-        ApiService.fetchTrendingMovie().then(data => {
-          renderGalleryFilms(data.results);
-        });
-      }
-      backToTop();
-    }
-  });
+    backToTop();
+  }
+});
 
-  function backToTop() {
-    if (window.pageYOffset > 0) {
-      window.scrollBy(0, -30);
-      setTimeout(backToTop, 0);
+const prevButton = document.querySelector('.prev');
+prevButton.addEventListener('click', () => {
+  if (ApiService.currentPage > 1) {
+    ApiService.currentPage--;
+    if (query) {
+      generatePagination(query, totalItems);
+      ApiService.searchQuery = query;
+      ApiService.getFilmOnSearch().then(data => {
+        renderGalleryFilms(data.results);
+      });
+    } else {
+      generatePagination('', totalItems);
+      ApiService.fetchTrendingMovie().then(data => {
+        renderGalleryFilms(data.results);
+      });
     }
+    backToTop();
+  }
+});
+
+function backToTop() {
+  if (window.pageYOffset > 0) {
+    window.scrollBy(0, -30);
+    setTimeout(backToTop, 0);
   }
 }
