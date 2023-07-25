@@ -103,15 +103,13 @@ export function generatePagination(query, totalItems) {
 
       backToTop();
     }
-  }
-  );
+  });
 
   const prevButton = document.querySelector('.prev');
   prevButton.addEventListener('click', () => {
     if (ApiService.currentPage > 1) {
       ApiService.currentPage--;
       if (query) {
-        console.log(query);
         generatePagination(query, totalItems);
         ApiService.searchQuery = query;
         ApiService.getFilmOnSearch().then(data => {
@@ -127,13 +125,10 @@ export function generatePagination(query, totalItems) {
     }
   });
 
-
   function backToTop() {
-  if (window.pageYOffset > 0) {
-    window.scrollBy(0, -30);
-    setTimeout(backToTop, 0);
+    if (window.pageYOffset > 0) {
+      window.scrollBy(0, -30);
+      setTimeout(backToTop, 0);
+    }
   }
 }
-}
-
-
