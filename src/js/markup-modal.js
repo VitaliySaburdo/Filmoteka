@@ -1,5 +1,5 @@
 import icons from '../images/sprite.svg';
-import {genresConverting, imgRender} from './checkers';
+import { genresConverting, imgRender } from './checkers';
 
 export const markuModalById = (
   {
@@ -62,16 +62,14 @@ export const markuModalById = (
       add to queue
     </button>
   </div>
-<button type="button" data-trailer=${results[0].key}>YouTube</button> 
+    ${results.length ?
+      `<button type="button" class="modal__btn--youtube" data-trailer=${results[0].key}>  
+    <svg width="160" height="64">
+      <use href=${icons + '#icon-youtube'}></use>
+    </svg>
+  </button>` : ''}
 </div>`;
 };
-
-
-
-
-
-
-
 
 // <iframe class="modal__trailer" src=https://www.youtube.com/embed/${
 //   results[0].key

@@ -212,3 +212,16 @@
   align-items: center;
   border-radius: 10px;
 }
+.modal__btn--youtube {
+  margin-top: 40px;
+  display: block;
+  margin-left: 65px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  fill: #c4302b;
+
+  &:hover {
+    fill: red;
+  }
+}
