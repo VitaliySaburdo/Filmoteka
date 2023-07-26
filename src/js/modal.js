@@ -22,18 +22,18 @@ function onOpenModal(event) {
 
   const selectedMovieId = selectedMovie.getAttribute('data-id');
   if (event.target.nodeName !== 'BUTTON') {
-
     openModal();
-    
     newData
       .getFilmDetails(selectedMovieId)
       .then(data => {
+        console.log(data);
         renderModalContent(data);
         addModalMovieListeners();
         return data;
       })
       .then(data => libraryStorage(data))
       .catch(error => console.log(error));
+    newData.getTrailerById(selectedMovieId).then(data => console.log(data));
   }
 }
 
