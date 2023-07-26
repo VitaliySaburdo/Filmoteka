@@ -68,9 +68,9 @@ const markupMovie = (
       add to queue
     </button>
   </div>
-  <p>${results[0].name}</p>
-  <p>${results[0].key}</p>
-  <p>${results[0].site}</p>
+  <iframe class="modal__trailer" src=https://www.youtube.com/embed/${
+    results[0].key
+  }></iframe>
 </div>`;
 };
 
