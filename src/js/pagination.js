@@ -1,5 +1,5 @@
 import newsApiService from './api-services';
-import { renderGalleryFilms } from './gallery';
+import { renderGalleryFilms } from './markup-gallery';
 
 const ApiService = new newsApiService();
 

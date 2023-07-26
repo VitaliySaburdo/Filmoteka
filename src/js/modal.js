@@ -47,10 +47,14 @@ function renderModalContent(filmDetails, trailerData) {
   cardContainer.innerHTML = markupModalById(filmDetails, trailerData);
 
   const youtubeButton = document.querySelector('.modal__btn--youtube');
-  youtubeButton.addEventListener('click', () => {
+
+  if (youtubeButton) {
+      youtubeButton.addEventListener('click', () => {
     const videoKey = youtubeButton.getAttribute('data-trailer');
     openVideoModal(videoKey);
   });
+  }
+
 }
 function openModal() {
   setTimeout(() => {

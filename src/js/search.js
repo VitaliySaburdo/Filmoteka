@@ -1,5 +1,5 @@
 import NewsApiService from './api-services';
-import { renderGalleryFilms } from './gallery';
+import { renderGalleryFilms } from './markup-gallery';
 import Notiflix from 'notiflix';
 import { generatePagination } from './pagination';
 
