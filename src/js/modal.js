@@ -1,5 +1,5 @@
 import newsApiService from './api-services';
-import { markupMovie } from './markup-modal';
+import { markuModalById } from './markup-modal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
@@ -43,7 +43,7 @@ async function onOpenModal(event) {
 }
 
 function renderModalContent(filmDetails, trailerData) {
-  cardContainer.innerHTML = markupMovie(filmDetails, trailerData);
+  cardContainer.innerHTML = markuModalById(filmDetails, trailerData);
 }
 function openModal() {
   setTimeout(() => {
