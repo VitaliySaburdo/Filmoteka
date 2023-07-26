@@ -3,6 +3,7 @@ import { markuModalById } from './markup-modal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
+import {openVideoModal} from './modal-trailer';
 
 const ApiService = new newsApiService();
 
@@ -29,13 +30,12 @@ async function onOpenModal(event) {
         ApiService.getTrailerById(selectedMovieId),
       ]);
 
-      console.log(filmDetails);
-      console.log(trailerData);
-
       renderModalContent(filmDetails, trailerData);
 
       addModalMovieListeners();
+
       libraryStorage(filmDetails);
+      
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +43,14 @@ async function onOpenModal(event) {
 }
 
 function renderModalContent(filmDetails, trailerData) {
+
   cardContainer.innerHTML = markuModalById(filmDetails, trailerData);
+
+  const youtubeButton = document.querySelector('.modal__btn--youtube');
+  youtubeButton.addEventListener('click', () => {
+    const videoKey = youtubeButton.getAttribute('data-trailer');
+    openVideoModal(videoKey);
+  });
 }
 function openModal() {
   setTimeout(() => {

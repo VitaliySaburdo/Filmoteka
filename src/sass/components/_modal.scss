@@ -215,7 +215,8 @@
 .modal__btn--youtube {
   margin-top: 40px;
   display: block;
-  margin-left: 65px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -226,5 +227,8 @@
 
   &:hover {
     fill: red;
+  }
+  @include mq(desk) {
+    margin-left: 65px;
   }
 }
