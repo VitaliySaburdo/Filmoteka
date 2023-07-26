@@ -1,7 +1,7 @@
 import icons from '../images/sprite.svg';
 import { genresConverting, imgRender } from './checkers';
 
-export const markuModalById = (
+export const markupModalById = (
   {
     poster_path,
     popularity,
@@ -71,8 +71,3 @@ export const markuModalById = (
 </div>`;
 };
 
-
-
-// <iframe class="modal__trailer" src=https://www.youtube.com/embed/${
-//   results[0].key
-// }></iframe>

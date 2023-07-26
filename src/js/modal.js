@@ -1,5 +1,5 @@
 import newsApiService from './api-services';
-import { markuModalById } from './markup-modal';
+import { markupModalById } from './markup-modal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
@@ -44,7 +44,7 @@ async function onOpenModal(event) {
 
 function renderModalContent(filmDetails, trailerData) {
 
-  cardContainer.innerHTML = markuModalById(filmDetails, trailerData);
+  cardContainer.innerHTML = markupModalById(filmDetails, trailerData);
 
   const youtubeButton = document.querySelector('.modal__btn--youtube');
   youtubeButton.addEventListener('click', () => {

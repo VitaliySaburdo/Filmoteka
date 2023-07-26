@@ -6,14 +6,25 @@ const imageGalleryRef = document.querySelector('.gallery-list');
 
 const ApiService = new newsApiService();
 
-ApiService.getGenres().then(({ genres }) => {
-  addToStorage('genresList', genres);
-});
+async function startGalleryFilms() {
+  try {
+    const [genresData, movieData] = await Promise.all([
+      ApiService.getGenres(),
+      ApiService.fetchTrendingMovie()
+    ]);
 
-ApiService.fetchTrendingMovie().then(data => {
-  renderGalleryFilms(data.results);
-  generatePagination('', 500);
-});
+    addToStorage('genresList', genresData.genres);
+    renderGalleryFilms(movieData.results);
+    generatePagination('', 500);
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
+startGalleryFilms();
+
+
+
 
 export function renderGalleryFilms(data) {
   imageGalleryRef.innerHTML = '';
