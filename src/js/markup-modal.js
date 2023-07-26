@@ -70,7 +70,7 @@ const markupMovie = (
   </div>
   <iframe class="modal__trailer" src=https://www.youtube.com/embed/${
     results[0].key
-  }></iframe>
+  } allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
 </div>`;
 };
 
