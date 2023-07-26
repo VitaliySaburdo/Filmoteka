@@ -1,13 +1,16 @@
-const markupMovie = ({
-  poster_path,
-  popularity,
-  vote_average,
-  vote_count,
-  title,
-  original_title,
-  genres,
-  overview,
-}) => {
+const markupMovie = (
+  {
+    poster_path,
+    popularity,
+    vote_average,
+    vote_count,
+    title,
+    original_title,
+    genres,
+    overview,
+  },
+  { results }
+) => {
   return ` <button class="modal__btn-close js-close">
   <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -65,9 +68,11 @@ const markupMovie = ({
       add to queue
     </button>
   </div>
+  <p>${results[0].name}</p>
+  <p>${results[0].key}</p>
+  <p>${results[0].site}</p>
 </div>`;
 };
-
 
 function genresConverting(genres) {
   if (genres.length) {

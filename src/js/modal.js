@@ -4,7 +4,7 @@ import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
 
-const newData = new newsApiService();
+const ApiService = new newsApiService();
 
 const cardContainer = document.querySelector('.modal-window');
 const card = document.querySelector('.gallery-list');
@@ -17,28 +17,33 @@ if (libraryEl) {
   libraryEl.addEventListener('click', onOpenModal);
 }
 
-function onOpenModal(event) {
+async function onOpenModal(event) {
   const selectedMovie = event.target.closest('.gallery__item');
 
   const selectedMovieId = selectedMovie.getAttribute('data-id');
   if (event.target.nodeName !== 'BUTTON') {
     openModal();
-    newData
-      .getFilmDetails(selectedMovieId)
-      .then(data => {
-        console.log(data);
-        renderModalContent(data);
-        addModalMovieListeners();
-        return data;
-      })
-      .then(data => libraryStorage(data))
-      .catch(error => console.log(error));
-    newData.getTrailerById(selectedMovieId).then(data => console.log(data));
+    try {
+      const [filmDetails, trailerData] = await Promise.all([
+        ApiService.getFilmDetails(selectedMovieId),
+        ApiService.getTrailerById(selectedMovieId),
+      ]);
+
+      console.log(filmDetails);
+      console.log(trailerData);
+
+      renderModalContent(filmDetails, trailerData);
+
+      addModalMovieListeners();
+      libraryStorage(filmDetails);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
-function renderModalContent(data) {
-  cardContainer.innerHTML = markupMovie(data);
+function renderModalContent(filmDetails, trailerData) {
+  cardContainer.innerHTML = markupMovie(filmDetails, trailerData);
 }
 function openModal() {
   setTimeout(() => {
