@@ -2,6 +2,7 @@ import NewsApiService from './api-services';
 import { renderGalleryFilms } from './markup-gallery';
 import Notiflix from 'notiflix';
 import { generatePagination } from './pagination';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const ApiService = new NewsApiService();
 const searchForm = document.querySelector('#header-form');
@@ -12,7 +13,7 @@ searchForm.addEventListener('submit', onSubmit);
 async function onSubmit(e) {
   e.preventDefault();
   ApiService.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
-
+  e.currentTarget.elements.searchQuery.value = '';
   if (ApiService.searchQuery === '') {
     Notiflix.Notify.info(`Please enter your query`, {
       position: 'center-top',
@@ -23,8 +24,9 @@ async function onSubmit(e) {
   }
 
   ApiService.currentPage = 1;
-
-  ApiService.getFilmOnSearch().then(data => {
+  try {
+    Loading.standard();
+    const data = await ApiService.getFilmOnSearch();
     if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
       renderGalleryFilms(data.results);
@@ -40,6 +42,9 @@ async function onSubmit(e) {
         cssAnimationStyle: 'from-top',
       });
     }
-  });
-  e.currentTarget.elements.searchQuery.value = '';
+  } catch (error) {
+    console.log(error);
+  } finally {
+    Loading.remove(300);
+  }
 }
