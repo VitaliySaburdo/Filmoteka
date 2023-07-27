@@ -1,9 +1,9 @@
 export function openVideoModal(videoKey) {
-  const backdrop = document.createElement("div");
-  backdrop.classList.add("modal__backdrop");
+  const backdrop = document.createElement('div');
+  backdrop.classList.add('modal__backdrop');
 
-  const iframe = document.createElement("iframe");
-  iframe.classList.add("modal__trailer");
+  const iframe = document.createElement('iframe');
+  iframe.classList.add('modal__trailer');
   iframe.src = `https://www.youtube.com/embed/${videoKey}`;
   iframe.allowFullscreen = true;
 
@@ -11,7 +11,14 @@ export function openVideoModal(videoKey) {
 
   document.body.appendChild(backdrop);
 
-  backdrop.addEventListener("click", () => {
-    backdrop.remove();
+  setTimeout(() => {
+    backdrop.classList.add('active');
+  }, 10);
+
+  backdrop.addEventListener('click', () => {
+    backdrop.classList.remove('active');
+    backdrop.addEventListener('transitionend', () => {
+      backdrop.remove();
+    });
   });
 }
