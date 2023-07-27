@@ -1,5 +1,5 @@
 import newsApiService from './api-services';
-import { renderGalleryFilms } from './gallery';
+import { renderGalleryFilms } from './markup-gallery';
 
 const ApiService = new newsApiService();
 
@@ -38,6 +38,7 @@ export function generatePagination(querySearch, itemsCount, page) {
       li.classList.add('active');
     }
     li.addEventListener('click', () => {
+      
       ApiService.currentPage = pageNumber;
       if (query) {
         generatePagination(query, totalItems);

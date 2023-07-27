@@ -8,7 +8,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.3);
   opacity: 1;
   transition-property: opacity;
   transition-duration: 350ms;
@@ -22,11 +22,12 @@
 
 .modal-window {
   position: relative;
-  top: 70%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 48px 20px 40px 20px;
-  width: 280px;
+  width: 90%;
+  max-width: 480px;
   background-color: var(--bgc-modal);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -35,6 +36,7 @@
   @include mq(tab) {
     display: flex;
     top: 50%;
+    max-width: none;
     width: 704px;
     height: 552px;
     padding: 40px 72px 40px 36px;
@@ -73,8 +75,11 @@
   }
 }
 .modal__sidebar--left {
+  position: relative;
   display: block;
   border-radius: 5px;
+  margin-right: auto;
+  margin-left: auto;
   width: 240px;
   height: 357px;
   margin-bottom: 20px;
@@ -211,4 +216,33 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
+}
+.modal__btn--youtube {
+  margin-top: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  fill: #c4302b;
+  transition-property: fill;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    fill: red;
+  }
+  @include mq(tab) {
+    position: absolute;
+    left: 10%;
+    bottom: 8%;
+  }
+
+  @include mq(desk) {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    margin-left: 65px;
+  }
 }

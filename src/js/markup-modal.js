@@ -1,4 +1,7 @@
-const markupMovie = (
+import icons from '../images/sprite.svg';
+import { genresConverting, imgRender } from './checkers';
+
+export const markupModalById = (
   {
     poster_path,
     popularity,
@@ -12,18 +15,9 @@ const markupMovie = (
   { results }
 ) => {
   return ` <button class="modal__btn-close js-close">
-  <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        fill="currentColor"
-        class="bi bi-x-lg"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"
-        />
-      </svg>
+  <svg width="18" height="18">
+    <use href=${icons + '#icon-close'}></use>
+  </svg>
 </button>
 <div class="modal__sidebar--left">
   <img
@@ -68,28 +62,16 @@ const markupMovie = (
       add to queue
     </button>
   </div>
-  <iframe class="modal__trailer" src=https://www.youtube.com/embed/${
-    results[0].key
-  } allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+    ${
+      results.length
+        ? `<button type="button" class="modal__btn--youtube" data-trailer=${
+            results[0].key
+          }>  
+    <svg width="160" height="64">
+      <use href=${icons + '#icon-youtube'}></use>
+    </svg>
+  </button>`
+        : ''
+    }
 </div>`;
 };
-
-function genresConverting(genres) {
-  if (genres.length) {
-    const genreArray = [];
-    genres.map(genre => {
-      genreArray.push(genre.name);
-    });
-
-    return genreArray.join(', ');
-  }
-  return 'N/A';
-}
-
-function imgRender(poster_path) {
-  if (poster_path) {
-    return `https://image.tmdb.org/t/p/w500${poster_path}`;
-  }
-  return `https://upload.wikimedia.org/wikipedia/commons/c/c2/No_image_poster.png?20170513175923`;
-}
-export { markupMovie };
