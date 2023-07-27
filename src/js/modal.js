@@ -3,7 +3,8 @@ import { markupModalById } from './markup-modal';
 import { libraryEl } from './library-storage';
 import { scrollController } from './scroll';
 import { libraryStorage } from './library-storage.js';
-import {openVideoModal} from './modal-trailer';
+import { openVideoModal } from './modal-trailer';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const ApiService = new newsApiService();
 
@@ -24,6 +25,7 @@ async function onOpenModal(event) {
   const selectedMovieId = selectedMovie.getAttribute('data-id');
   if (event.target.nodeName !== 'BUTTON') {
     openModal();
+    Loading.standard();
     try {
       const [filmDetails, trailerData] = await Promise.all([
         ApiService.getFilmDetails(selectedMovieId),
@@ -35,26 +37,25 @@ async function onOpenModal(event) {
       addModalMovieListeners();
 
       libraryStorage(filmDetails);
-      
     } catch (error) {
       console.log(error);
+    } finally {
+      Loading.remove(300);
     }
   }
 }
 
 function renderModalContent(filmDetails, trailerData) {
-
   cardContainer.innerHTML = markupModalById(filmDetails, trailerData);
 
   const youtubeButton = document.querySelector('.modal__btn--youtube');
 
   if (youtubeButton) {
-      youtubeButton.addEventListener('click', () => {
-    const videoKey = youtubeButton.getAttribute('data-trailer');
-    openVideoModal(videoKey);
-  });
+    youtubeButton.addEventListener('click', () => {
+      const videoKey = youtubeButton.getAttribute('data-trailer');
+      openVideoModal(videoKey);
+    });
   }
-
 }
 function openModal() {
   setTimeout(() => {

@@ -24,8 +24,10 @@ async function onSubmit(e) {
   }
 
   ApiService.currentPage = 1;
+
+  Loading.standard();
+
   try {
-    Loading.standard();
     const data = await ApiService.getFilmOnSearch();
     if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
