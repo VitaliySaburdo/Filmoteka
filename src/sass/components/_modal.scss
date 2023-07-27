@@ -73,6 +73,7 @@
   }
 }
 .modal__sidebar--left {
+  position: relative;
   display: block;
   border-radius: 5px;
   width: 240px;
@@ -228,7 +229,16 @@
   &:hover {
     fill: red;
   }
+  @include mq(tab) {
+    position: absolute;
+    left: 10%;
+    bottom: 8%;
+  }
+
   @include mq(desk) {
+    position: relative;
+    left: 0;
+    bottom: 0;
     margin-left: 65px;
   }
 }

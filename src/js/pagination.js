@@ -38,6 +38,7 @@ export function generatePagination(querySearch, itemsCount, page) {
       li.classList.add('active');
     }
     li.addEventListener('click', () => {
+      
       ApiService.currentPage = pageNumber;
       if (query) {
         generatePagination(query, totalItems);
