@@ -7,10 +7,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 const ApiService = new newsApiService();
 
 async function startGalleryFilms() {
-  Loading.custom({
-    customSvgUrl:
-      'https://notiflix.github.io/content/media/loading/notiflix-loading-nx-light.svg',
-  });
+  Loading.standard();
   try {
     const [genresData, movieData] = await Promise.all([
       ApiService.getGenres(),
@@ -23,7 +20,7 @@ async function startGalleryFilms() {
   } catch (error) {
     console.log(error);
   } finally {
-    Loading.remove(100);
+    Loading.remove(300);
   }
 }
 startGalleryFilms();
