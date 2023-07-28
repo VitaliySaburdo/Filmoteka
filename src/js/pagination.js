@@ -37,21 +37,9 @@ export function generatePagination(querySearch, itemsCount, page) {
     if (isActive) {
       li.classList.add('active');
     }
-    li.addEventListener('click', () => {
-      
+    li.addEventListener('click', async () => {
       ApiService.currentPage = pageNumber;
-      if (query) {
-        generatePagination(query, totalItems);
-        ApiService.searchQuery = query;
-        ApiService.getFilmOnSearch().then(data => {
-          renderGalleryFilms(data.results);
-        });
-      } else {
-        ApiService.fetchTrendingMovie().then(data => {
-          generatePagination('', totalItems);
-          renderGalleryFilms(data.results);
-        });
-      }
+      handleButtonClick();
       backToTop();
     });
     return li;
@@ -106,44 +94,35 @@ export function generatePagination(querySearch, itemsCount, page) {
 }
 
 const nextButton = document.querySelector('.next');
-nextButton.addEventListener('click', () => {
+nextButton.addEventListener('click', async () => {
   if (ApiService.currentPage < totalItems) {
     ApiService.currentPage++;
-    if (query) {
-      generatePagination(query, totalItems);
-      ApiService.searchQuery = query;
-      ApiService.getFilmOnSearch().then(data => {
-        renderGalleryFilms(data.results);
-      });
-    } else {
-      generatePagination('', totalItems);
-      ApiService.fetchTrendingMovie().then(data => {
-        renderGalleryFilms(data.results);
-      });
-    }
+    handleButtonClick();
     backToTop();
   }
 });
 
 const prevButton = document.querySelector('.prev');
-prevButton.addEventListener('click', () => {
+prevButton.addEventListener('click', async () => {
   if (ApiService.currentPage > 1) {
     ApiService.currentPage--;
-    if (query) {
-      generatePagination(query, totalItems);
-      ApiService.searchQuery = query;
-      ApiService.getFilmOnSearch().then(data => {
-        renderGalleryFilms(data.results);
-      });
-    } else {
-      generatePagination('', totalItems);
-      ApiService.fetchTrendingMovie().then(data => {
-        renderGalleryFilms(data.results);
-      });
-    }
+    handleButtonClick();
     backToTop();
   }
 });
+
+async function handleButtonClick() {
+  if (query) {
+    generatePagination(query, totalItems);
+    ApiService.searchQuery = query;
+    const { results } = await ApiService.getFilmOnSearch();
+    renderGalleryFilms(results);
+  } else {
+    const { results } = await ApiService.fetchTrendingMovie();
+    generatePagination('', totalItems);
+    renderGalleryFilms(results);
+  }
+}
 
 function backToTop() {
   if (window.pageYOffset > 0) {
