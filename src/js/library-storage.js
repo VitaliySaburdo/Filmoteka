@@ -3,6 +3,7 @@ import {
   getFromStorage,
   removeFromStorage,
 } from './local-storage';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export const libraryEl = document.querySelector('.library__list');
 const queueButton = document.querySelector('.queue_button');
@@ -12,6 +13,8 @@ let queueMovie = getFromStorage('queue') || [];
 let watchMovie = getFromStorage('watch') || [];
 
 if (libraryEl) {
+  Loading.standard();
+  Loading.remove(500);
   watchedButton.addEventListener('click', handleClickWatched);
   queueButton.addEventListener('click', handleClickQueue);
 }
