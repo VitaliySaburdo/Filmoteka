@@ -11,41 +11,36 @@
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item list">
-            <a class="nav__link nav__link--current link" href="./index.html">
+            <a class="nav__link nav__link--current link" href="./index.html" data-lang="home">
               Home
             </a>
           </li>
           <li class="nav__item list">
-            <a class="nav__link link" href="./library.html"> My library </a>
+            <a class="nav__link link" href="./library.html" data-lang="my_library"> My library </a>
           </li>
+          <button id="language-toggle" class="link">Toggle Language</button>
         </ul>
       </nav>
       <!-- dark/lite theme -->
-    <div class="theme__container theme-js">
-      <div class="toggle toggle-js">
-        <div class="toggle-button toggle__btn-js"></div>
+      <div class="theme__container theme-js">
+        <div class="toggle toggle-js">
+          <div class="toggle-button toggle__btn-js"></div>
+        </div>
+        <div class="theme__dark dark-js">light</div>
       </div>
-      <div class="theme__dark dark-js">light</div>
     </div>
   </div>
-    </div>
-    
+
   <!-- form -->
-    <div class="header__form">
-      <form class="header__search-form" id="header-form">
-        <input
-          class="input-form"
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Movie search"
-        />
-        <button class="button-form" type="submit">
-          <svg width="12" height="12" aria-label="Search">
-            <use href="./images/sprite.svg#search"></use>
-          </svg>
-        </button>
-      </form>
-    </div>
+  <div class="header__form">
+    <form class="header__search-form" id="header-form">
+      <input class="input-form" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+      <button class="button-form" type="submit">
+        <svg width="12" height="12" aria-label="Search">
+          <use href="./images/sprite.svg#search"></use>
+        </svg>
+      </button>
+    </form>
+  </div>
   </div>
 </header>
