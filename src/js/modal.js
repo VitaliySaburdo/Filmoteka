@@ -1,8 +1,7 @@
 import newsApiService from './api-services';
 import { markupModalById } from './markup-modal';
-import { libraryEl } from './library-storage';
+import { libraryEl, libraryStorage } from './library-page';
 import { scrollController } from './scroll';
-import { libraryStorage } from './library-storage.js';
 import { openVideoModal } from './modal-trailer';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
