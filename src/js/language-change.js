@@ -1,30 +1,35 @@
+import { addToStorage, getFromStorage } from './local-storage';
+
 const languageToggleBtn = document.getElementById('language-toggle');
 
 languageToggleBtn.addEventListener('click', toggleLanguage);
 
-let currentLanguage = 'en'
+let currentLanguage = 'en';
 
 function toggleLanguage() {
-    currentLanguage = currentLanguage === 'en' ? 'uk' : 'en';
-
-    setLanguage(currentLanguage)
+  currentLanguage = currentLanguage === 'en' ? 'ua' : 'en';
+  
+    setLanguage(currentLanguage);
+    addToStorage('lang', currentLanguage);
 }
 
-function setLanguage(lang) {
-    const langEl = document.querySelectorAll(['data-lang']);
-
-    console.log(lang);
-}
-
-
-
-const lang = {
-    home: {
-        en: "Home",
-        ua: "Домашня"
-    },
-    my_library: {
-         en: "My library ",
-        ua: "Моя бібліотека"
+function setLanguage(currentLanguage) {
+  const langEls = document.querySelectorAll('[data-lang]');
+  langEls.forEach(el => {
+    const key = el.getAttribute('data-lang');
+    if (languages.hasOwnProperty(key)) {
+      el.textContent = languages[key][currentLanguage];
     }
+  });
 }
+
+const languages = {
+  home: {
+    en: 'Home',
+    ua: 'Домашня',
+  },
+  my_library: {
+    en: 'My library ',
+    ua: 'Моя бібліотека',
+  },
+};
