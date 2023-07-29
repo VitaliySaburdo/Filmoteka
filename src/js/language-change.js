@@ -1,17 +1,19 @@
 import { addToStorage, getFromStorage } from './local-storage';
-
 const languageToggleBtn = document.getElementById('language-toggle');
 
 languageToggleBtn.addEventListener('click', toggleLanguage);
 
-let currentLanguage = 'en';
+let currentLanguage = getFromStorage('lang') ||'en';
 
 function toggleLanguage() {
   currentLanguage = currentLanguage === 'en' ? 'ua' : 'en';
   
     setLanguage(currentLanguage);
+    console.log(typeof currentLanguage);
     addToStorage('lang', currentLanguage);
 }
+
+
 
 function setLanguage(currentLanguage) {
   const langEls = document.querySelectorAll('[data-lang]');
@@ -33,3 +35,5 @@ const languages = {
     ua: 'Моя бібліотека',
   },
 };
+
+setLanguage(currentLanguage);

@@ -12,7 +12,7 @@ function addToStorage(key, value) {
 
 function getFromStorage(key) {
   try {
-    return JSON.parse(localStorage.getItem(key));
+    return localStorage.getItem(key);
   } catch (error) {
     console.error(error);
   }
