@@ -7,7 +7,7 @@ languageToggleBtn.addEventListener('click', toggleLanguage);
 
 let currentLanguage = getFromStorage('lang') || 'en';
 addToStorage('lang', currentLanguage);
-if (currentLanguage === 'en') {
+if (currentLanguage === 'ua') {
   toggleTheme.classList.toggle('toggle__lang');
 }
 
