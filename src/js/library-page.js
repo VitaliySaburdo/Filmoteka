@@ -130,9 +130,13 @@ function renderLibrary(data, name) {
   if (libraryEl) {
     libraryEl.innerHTML =
       markup ||
-      `<div class="library__background">
-      <h2 class='library__title'>Sorry, you don't have movies in your ${name}</h2>
-      </div>`;
+      (localStorage.getItem('lang') === 'en'
+        ? `<div class="library__background">
+      <h2 class='library__title' data-lang='library__title'>Sorry, there are no attached files here</h2>
+      </div>`
+        : `<div class="library__background">
+      <h2 class='library__title' data-lang='library__title'>Нажаль тут немає доданих файлів</h2>
+      </div>`);
   }
 }
 

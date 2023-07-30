@@ -67,6 +67,10 @@ const languages = {
   queue: {
     en: 'Queue',
     ua: 'До перегляду'
+  },
+  library__title: {
+    en: 'Sorry, there are no attached files here',
+    ua: 'Нажаль тут немає доданих файлів'
   }
 };
 
