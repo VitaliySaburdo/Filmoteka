@@ -1,4 +1,4 @@
-import { addToStorage, getFromStorage } from './local-storage';
+import { addToStorage } from './local-storage';
 
 const languageToggleBtn = document.getElementById('language-toggle');
 const toggleTheme = document.querySelector('.language');
@@ -12,7 +12,7 @@ if (currentLanguage === 'ua') {
 }
 
 function toggleLanguage() {
-toggleTheme.classList.toggle('toggle__lang')
+  toggleTheme.classList.toggle('toggle__lang');
 
   currentLanguage = currentLanguage === 'en' ? 'ua' : 'en';
 
@@ -32,7 +32,7 @@ function setLanguage(currentLanguage) {
 }
 
 const languages = {
-    filmoteka: {
+  filmoteka: {
     en: 'Filmoteka',
     ua: 'Фільмотека',
   },
@@ -52,10 +52,22 @@ const languages = {
     en: 'light',
     ua: 'світла',
   },
-    placeholder: {
+  placeholder: {
     en: 'Movie search',
     ua: 'Пошук фільму',
   },
+  footer_text: {
+    en: '© 2022 | All Rights Reserved',
+    ua: '© 2022 | Всі права захищені',
+  },
+  watched: {
+    en: 'Watched',
+    ua: 'Переглянуті'
+  },
+  queue: {
+    en: 'Queue',
+    ua: 'До перегляду'
+  }
 };
 
 setLanguage(currentLanguage);
