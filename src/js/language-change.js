@@ -5,7 +5,7 @@ const toggleTheme = document.querySelector('.language');
 
 languageToggleBtn.addEventListener('click', toggleLanguage);
 
-let currentLanguage = getFromStorage('lang') || 'en';
+let currentLanguage = localStorage.getItem('lang') || 'en';
 addToStorage('lang', currentLanguage);
 if (currentLanguage === 'ua') {
   toggleTheme.classList.toggle('toggle__lang');

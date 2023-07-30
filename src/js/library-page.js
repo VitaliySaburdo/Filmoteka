@@ -49,6 +49,7 @@ export function libraryStorage(movieData) {
   function handleButtonClick(type, button) {
     if (movieData) {
       const movieList = type === 'watch' ? watchMovie : queueMovie;
+      console.log(movieList);
       const movieIndex = movieList.findIndex(e => e.id === movieData.id);
 
       if (movieIndex !== -1) {
