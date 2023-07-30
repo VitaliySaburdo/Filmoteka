@@ -69,8 +69,8 @@ const languages = {
     ua: 'До перегляду'
   },
   library__title: {
-    en: 'Sorry, there are no attached files here',
-    ua: 'Нажаль тут немає доданих файлів'
+    en: 'Sorry, there are no attached movies here',
+    ua: 'Нажаль тут немає доданих фільмів'
   }
 };
 

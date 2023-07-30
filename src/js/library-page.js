@@ -132,10 +132,10 @@ function renderLibrary(data, name) {
       markup ||
       (localStorage.getItem('lang') === 'en'
         ? `<div class="library__background">
-      <h2 class='library__title' data-lang='library__title'>Sorry, there are no attached files here</h2>
+      <h2 class='library__title' data-lang='library__title'>Sorry, there are no attached movies here</h2>
       </div>`
         : `<div class="library__background">
-      <h2 class='library__title' data-lang='library__title'>Нажаль тут немає доданих файлів</h2>
+      <h2 class='library__title' data-lang='library__title'>Нажаль тут немає доданих фільмів</h2>
       </div>`);
   }
 }
