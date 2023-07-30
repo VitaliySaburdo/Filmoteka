@@ -199,29 +199,35 @@
 
 .theme__container .toggle {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   top: 0;
   left: 0;
-  width: 35px;
-  height: 20px;
-  background: rgba(162, 40, 40, 0.808);
+  width: 55px;
+  height: 30px;
+  background: rgba(179, 73, 73, 0.808);
   border-radius: 30px;
   cursor: pointer;
 }
 
 .theme__container .toggle .toggle-button {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 16px;
-  height: 16px;
-  background: linear-gradient(to bottom, #444, #222);
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  // background: linear-gradient(to bottom, #e9e4e4, #222);
+  // border: 1px solid #222;
   border-radius: 50%;
   transition: 0.3s;
 }
 .theme__container .toggle__light {
   transition: background-color 300ms;
   .toggle-button {
-    left: 17px;
+    left: 25px;
   }
 }
 
@@ -234,6 +240,10 @@
   text-transform: uppercase;
   color: var(--cl-ivory);
   margin-left: 2px;
+}
+
+.theme__icon {
+  fill: #f9eded;
 }
 
 .header__icon {
