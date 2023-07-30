@@ -35,7 +35,7 @@
     }
   }
 }
-.header__lybrary {
+.header__library {
   height: 230px;
   max-width: 100%;
   margin-left: auto;
@@ -188,13 +188,17 @@
 
 .theme__container {
   position: absolute;
-  top: 30px;
-  right: -30px;
+  top: 142px;
+  right: 70px;
   transform: translate(-50%, -50%);
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &.language {
+    right: -30px;
+  }
 }
 
 .theme__container .toggle {
@@ -219,12 +223,17 @@
   width: 30px;
   height: 30px;
   background-color: #ffffff;
-  // background: linear-gradient(to bottom, #e9e4e4, #222);
-  // border: 1px solid #222;
   border-radius: 50%;
   transition: 0.3s;
 }
 .theme__container .toggle__light {
+  transition: background-color 300ms;
+  .toggle-button {
+    left: 25px;
+  }
+}
+
+.theme__container .toggle__lang {
   transition: background-color 300ms;
   .toggle-button {
     left: 25px;

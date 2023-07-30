@@ -1,4 +1,4 @@
-<header class="header__lybrary">
+<header class="header__library">
   <div class="container">
     <div class="header__container">
       <a href="./index.html" class="header__logo--link link">
@@ -13,21 +13,25 @@
             <a class="nav__link link" href="./index.html"> Home </a>
           </li>
           <li class="nav__item list">
-            <a
-              class="nav__link link nav__link--current link library__link"
-              href="./library.html"
-            >
+            <a class="nav__link link nav__link--current link library__link" href="./library.html">
               My library
             </a>
           </li>
         </ul>
       </nav>
       <!-- dark/lite theme -->
-      <div class="theme__container theme-js">
-        <div class="toggle toggle-js">
-          <div class="toggle-button toggle__btn-js"></div>
+      <div class="theme__container">
+        <div class="toggle">
+          <svg width="20" height="20" class="theme__icon">
+            <use href="./images/sprite.svg#icon-moon"></use>
+          </svg>
+          <svg width="20" height="20" class="theme__icon">
+            <use href="./images/sprite.svg#icon-sun"></use>
+          </svg>
+
+          <div class="toggle-button"></div>
         </div>
-        <div class="theme__dark dark-js">light</div>
+        <div class="theme" data-lang="theme"></div>
       </div>
     </div>
 

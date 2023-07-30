@@ -16,41 +16,46 @@
             </a>
           </li>
           <li class="nav__item list">
-            <a class="nav__link link" href="./library.html" data-lang="my_library"> My library </a>
+            <a class="nav__link link" href="./library.html" data-lang="my_library">
+              My library
+            </a>
           </li>
-          <button id="language-toggle" class="link">Toggle Language</button>
         </ul>
       </nav>
       <!-- dark/lite theme -->
       <div class="theme__container">
-
         <div class="toggle">
-                    <svg width="20" height="20" class="theme__icon">
-                      <use href="./images/sprite.svg#icon-moon"></use>
-                    </svg>
+          <svg width="20" height="20" class="theme__icon">
+            <use href="./images/sprite.svg#icon-moon"></use>
+          </svg>
           <svg width="20" height="20" class="theme__icon">
             <use href="./images/sprite.svg#icon-sun"></use>
           </svg>
 
           <div class="toggle-button"></div>
         </div>
-        <div class="theme" data-lang="theme">
-
+        <div class="theme" data-lang="theme"></div>
+      </div>
+      <!-- language -->
+      <div class="theme__container language">
+        <div class="toggle" id="language-toggle">
+          <span>UA</span><span>EN</span>
+          <div class="toggle-button"></div>
         </div>
+        <div class="theme" data-lang="theme"></div>
       </div>
     </div>
-  </div>
 
-  <!-- form -->
-  <div class="header__form">
-    <form class="header__search-form" id="header-form">
-      <input class="input-form" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
-      <button class="button-form" type="submit">
-        <svg width="12" height="12" aria-label="Search">
-          <use href="./images/sprite.svg#search"></use>
-        </svg>
-      </button>
-    </form>
-  </div>
+    <!-- form -->
+    <div class="header__form">
+      <form class="header__search-form" id="header-form">
+        <input class="input-form" type="text" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+        <button class="button-form" type="submit">
+          <svg width="12" height="12" aria-label="Search">
+            <use href="./images/sprite.svg#search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
   </div>
 </header>

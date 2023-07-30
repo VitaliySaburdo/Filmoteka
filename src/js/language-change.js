@@ -1,5 +1,7 @@
 import { addToStorage, getFromStorage } from './local-storage';
+
 const languageToggleBtn = document.getElementById('language-toggle');
+// const toggleTheme = document.querySelector('.toggle');
 
 languageToggleBtn.addEventListener('click', toggleLanguage);
 
@@ -8,6 +10,8 @@ let currentLanguage = getFromStorage('lang') || 'en';
 addToStorage('lang', currentLanguage);
 
 function toggleLanguage() {
+// toggleTheme.classList.toggle('toggle__lang')
+
   currentLanguage = currentLanguage === 'en' ? 'ua' : 'en';
 
   setLanguage(currentLanguage);
