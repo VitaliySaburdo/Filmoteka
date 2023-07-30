@@ -26,11 +26,16 @@ function setLanguage(currentLanguage) {
     const key = el.getAttribute('data-lang');
     if (languages.hasOwnProperty(key)) {
       el.textContent = languages[key][currentLanguage];
+      el.placeholder = languages[key][currentLanguage];
     }
   });
 }
 
 const languages = {
+    filmoteka: {
+    en: 'Filmoteka',
+    ua: 'Фільмотека',
+  },
   home: {
     en: 'Home',
     ua: 'Домашня',
@@ -46,6 +51,10 @@ const languages = {
   light_theme: {
     en: 'light',
     ua: 'світла',
+  },
+    placeholder: {
+    en: 'Movie search',
+    ua: 'Пошук фільму',
   },
 };
 
