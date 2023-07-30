@@ -216,7 +216,7 @@
   cursor: pointer;
 }
 
-.theme__container .toggle .toggle-button {
+.toggle-button {
   position: absolute;
   top: 0;
   left: 0;
@@ -226,14 +226,15 @@
   border-radius: 50%;
   transition: 0.3s;
 }
-.theme__container .toggle__light {
+
+.toggle__light {
   transition: background-color 300ms;
   .toggle-button {
     left: 25px;
   }
 }
 
-.theme__container .toggle__lang {
+.toggle__lang {
   transition: background-color 300ms;
   .toggle-button {
     left: 25px;
@@ -249,6 +250,10 @@
   text-transform: uppercase;
   color: var(--cl-ivory);
   margin-left: 2px;
+}
+
+.language__txt {
+  color: #ffffff;
 }
 
 .theme__icon {
