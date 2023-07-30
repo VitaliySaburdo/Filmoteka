@@ -12,7 +12,8 @@ export default class NewsApiService {
 
   async fetchTrendingMovie() {
     try {
-      const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.currentPage}`;
+      console.log(this.currentLanguage);
+      const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.currentPage}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -22,7 +23,7 @@ export default class NewsApiService {
 
   async getTrailerById(id) {
     try {
-      const url = `${BASE_URL}movie/${id}/videos?api_key=${API_KEY}`;
+      const url = `${BASE_URL}movie/${id}/videos?api_key=${API_KEY}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -32,7 +33,7 @@ export default class NewsApiService {
 
   async getFilmDetails(id) {
     try {
-      const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
+      const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -42,7 +43,7 @@ export default class NewsApiService {
 
   async getFilmOnSearch() {
     try {
-      const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${this.searchQuery}&page=${this.currentPage}`;
+      const url = `${BASE_URL}search/movie?api_key=${API_KEY}&language=${this.currentLanguage}&query=${this.searchQuery}&page=${this.currentPage}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -72,5 +73,13 @@ export default class NewsApiService {
 
   set currentPage(newPage) {
     this.page = newPage;
+  }
+
+  get currentLanguage() {
+    return this.lang;
+  }
+
+  set currentLanguage(newLanguage) {
+    return (this.lang = newLanguage);
   }
 }
