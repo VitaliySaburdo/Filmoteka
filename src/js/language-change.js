@@ -1,4 +1,8 @@
 import { addToStorage } from './local-storage';
+import NewsApiService from './api-services';
+import { renderGalleryFilms } from './markup-gallery';
+
+const ApiService = new NewsApiService();
 
 const languageToggleBtn = document.getElementById('language-toggle');
 const toggleTheme = document.querySelector('.language');
@@ -11,12 +15,17 @@ if (currentLanguage === 'ua') {
   toggleTheme.classList.toggle('toggle__lang');
 }
 
-function toggleLanguage() {
+async function toggleLanguage() {
   toggleTheme.classList.toggle('toggle__lang');
 
   currentLanguage = currentLanguage === 'en' ? 'ua' : 'en';
 
   setLanguage(currentLanguage);
+
+  ApiService.currentLanguage = currentLanguage;
+  const data = await ApiService.fetchTrendingMovie();
+  console.log(data.results);
+  renderGalleryFilms(data.results);
 }
 
 function setLanguage(currentLanguage) {
@@ -62,16 +71,16 @@ const languages = {
   },
   watched: {
     en: 'Watched',
-    ua: 'Переглянуті'
+    ua: 'Переглянуті',
   },
   queue: {
     en: 'Queue',
-    ua: 'До перегляду'
+    ua: 'До перегляду',
   },
   library__title: {
     en: 'Sorry, there are no attached movies here',
-    ua: 'Нажаль тут немає доданих фільмів'
-  }
+    ua: 'Нажаль тут немає доданих фільмів',
+  },
 };
 
 setLanguage(currentLanguage);
