@@ -11,14 +11,14 @@ languageToggleBtn.addEventListener('click', toggleLanguage);
 
 let currentLanguage = localStorage.getItem('lang') || 'en';
 addToStorage('lang', currentLanguage);
-if (currentLanguage === 'ua') {
+if (currentLanguage === 'uk') {
   toggleTheme.classList.toggle('toggle__lang');
 }
 
 async function toggleLanguage() {
   toggleTheme.classList.toggle('toggle__lang');
 
-  currentLanguage = currentLanguage === 'en' ? 'ua' : 'en';
+  currentLanguage = currentLanguage === 'en' ? 'uk' : 'en';
 
   setLanguage(currentLanguage);
 
@@ -43,43 +43,43 @@ function setLanguage(currentLanguage) {
 const languages = {
   filmoteka: {
     en: 'Filmoteka',
-    ua: 'Фільмотека',
+    uk: 'Фільмотека',
   },
   home: {
     en: 'Home',
-    ua: 'Домашня',
+    uk: 'Домашня',
   },
   my_library: {
     en: 'My library',
-    ua: 'Моя бібліотека',
+    uk: 'Моя бібліотека',
   },
   dark_theme: {
     en: 'dark',
-    ua: 'темна',
+    uk: 'темна',
   },
   light_theme: {
     en: 'light',
-    ua: 'світла',
+    uk: 'світла',
   },
   placeholder: {
     en: 'Movie search',
-    ua: 'Пошук фільму',
+    uk: 'Пошук фільму',
   },
   footer_text: {
     en: '© 2022 | All Rights Reserved',
-    ua: '© 2022 | Всі права захищені',
+    uk: '© 2022 | Всі права захищені',
   },
   watched: {
     en: 'Watched',
-    ua: 'Переглянуті',
+    uk: 'Переглянуті',
   },
   queue: {
     en: 'Queue',
-    ua: 'До перегляду',
+    uk: 'До перегляду',
   },
   library__title: {
     en: 'Sorry, there are no attached movies here',
-    ua: 'Нажаль тут немає доданих фільмів',
+    uk: 'Нажаль тут немає доданих фільмів',
   },
 };
 
