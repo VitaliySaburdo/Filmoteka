@@ -115,9 +115,11 @@ async function handleButtonClick() {
   if (query) {
     generatePagination(query, totalItems);
     ApiService.searchQuery = query;
+    ApiService.currentLanguage = localStorage.getItem('lang');
     const { results } = await ApiService.getFilmOnSearch();
     renderGalleryFilms(results);
   } else {
+    ApiService.currentLanguage = localStorage.getItem('lang');
     const { results } = await ApiService.fetchTrendingMovie();
     generatePagination('', totalItems);
     renderGalleryFilms(results);
