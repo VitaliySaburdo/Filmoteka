@@ -32,33 +32,57 @@ export const markupModalById = (
   <h2 class="modal__title">${title}</h2>
   <ul class="modal__list lst">
     <li class="modal__item">
-      <p class="modal__heading lng-vote">Vote / Votes</p>
+      <p class="modal__heading lng-vote">${
+        localStorage.getItem('lang') === 'en'
+          ? 'Vote / Votes'
+          : 'Рейтинг / Голосів'
+      }</p>
       <p class="modal__txt">
         <span class="modal__vote">${vote_average.toFixed(1)}</span> /
         <span class="modal__votes">${vote_count.toFixed(1)}</span>
       </p>
     </li>
     <li class="modal__item">
-      <p class="modal__heading lng-popular">Popularity</p>
+      <p class="modal__heading lng-popular">${
+        localStorage.getItem('lang') === 'en' ? 'Popularity' : 'Популярність'
+      }</p>
       <p class="modal__txt">${popularity.toFixed(1)}</p>
     </li>
     <li class="modal__item">
-      <p class="modal__heading lng-originalTitle">Original Title</p>
+      <p class="modal__heading lng-originalTitle">${
+        localStorage.getItem('lang') === 'en'
+          ? 'Original Title'
+          : 'Оригінальна Назва'
+      }</p>
       <p class="modal__txt">${title}</p>
     </li>
     <li class="modal__item">
-      <p class="modal__heading lng-genre">Genre</p>
+      <p class="modal__heading lng-genre">${
+        localStorage.getItem('lang') === 'en' ? 'Genre' : 'Жанр'
+      }</p>
       <p class="modal__txt">${genresConverting(genres)}</p>
     </li>
   </ul>
-  <h3 class="modal__subtitle lng-about">ABOUT</h3>
+  <h3 class="modal__subtitle lng-about">${
+    localStorage.getItem('lang') === 'en' ? 'ABOUT' : 'ОПИС'
+  }</h3>
   <p class="modal__desc">${overview}</p>
   <div class="modal__box">
     <button name=watched type="button" class="modal__btn--left js-watched">
-      add to Watched
+    ${
+      localStorage.getItem('lang') === 'en'
+        ? 'add to Watched'
+        : 'додати до переглянутих'
+    }
+      
     </button>
     <button name=queue type="button" class="modal__btn--right js-queue">
-      add to queue
+    ${
+      localStorage.getItem('lang') === 'en'
+        ? 'add to queue'
+        : 'додати до черги перегляду'
+    }
+      
     </button>
   </div>
     ${

@@ -133,7 +133,9 @@
   margin-bottom: 20px;
 }
 .modal__heading {
-  width: 109px;
+  display: flex;
+  align-items: center;
+  width: 120px;
   @include fonts(12px, 500, 16px);
   color: var(--cl-txt);
 }

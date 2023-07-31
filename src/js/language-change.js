@@ -77,11 +77,15 @@ const languages = {
   },
   queue: {
     en: 'Queue',
-    uk: 'До перегляду',
+    uk: 'Черга перегляду',
   },
   library__title: {
     en: 'Sorry, there are no attached movies here',
     uk: 'Нажаль тут немає доданих фільмів',
+  },
+  add_to_watched: {
+    en: 'add to watched',
+    uk: 'Додати до переглянутих',
   },
 };
 

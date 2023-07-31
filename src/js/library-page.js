@@ -54,14 +54,29 @@ export function libraryStorage(movieData) {
 
       if (movieIndex !== -1) {
         button.classList.remove('button--accent');
-        button.textContent =
-          type === 'watch' ? 'ADD TO WATCHED' : 'ADD TO QUEUE';
+        let addWatched =
+          localStorage.getItem('lang') === 'en'
+            ? 'ADD TO WATCHED'
+            : 'ДОДАТИ ПО ПЕРЕГЛЯНУТИХ';
+        let addQueue =
+          localStorage.getItem('lang') === 'en'
+            ? 'ADD TO QUEUE'
+            : 'ДОДАТИ ПО ЧЕРГИ ПЕРЕГЛЯДУ';
+
+        button.textContent = type === 'watch' ? addWatched : addQueue;
         movieList.splice(movieIndex, 1);
         removeFromStorage(type);
         renderLibrary(movieList, type);
       } else {
-        button.textContent =
-          type === 'watch' ? 'REMOVE FROM WATCHED' : 'REMOVE FROM QUEUE';
+        let removedWatched =
+          localStorage.getItem('lang') === 'en'
+            ? 'REMOVE FROM WATCHED'
+            : 'ВИДАЛИТИ З ПЕРЕГЛЯНУТИХ';
+        let removeQueue =
+          localStorage.getItem('lang') === 'en'
+            ? 'REMOVE TO QUEUE'
+            : 'ВИДАЛИТИ З ЧЕРГИ ПЕРЕГЛЯДУ';
+        button.textContent = type === 'watch' ? removedWatched : removeQueue;
         button.classList.add('button--accent');
         movieList.push(movieData);
         addToStorage(type, movieList);
