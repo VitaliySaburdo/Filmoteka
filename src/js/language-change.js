@@ -23,10 +23,11 @@ async function toggleLanguage() {
   setLanguage(currentLanguage);
 
   ApiService.currentLanguage = currentLanguage;
+  const genresData = await ApiService.getGenres();
+  console.log(genresData);
+  addToStorage('genresList', genresData.genres);
   const data = await ApiService.fetchTrendingMovie();
   renderGalleryFilms(data.results);
-  const genresData = await ApiService.getGenres();
-  addToStorage('genresList', genresData.genres);
 }
 
 function setLanguage(currentLanguage) {

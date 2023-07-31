@@ -51,7 +51,6 @@ function checkTitle(title) {
 
 function changeGenre(genre_ids) {
   const genresInfo = getFromStorage('genresList');
-  console.log(genresInfo);
 
   const genreArray = [];
 
