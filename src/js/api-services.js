@@ -12,7 +12,6 @@ export default class NewsApiService {
 
   async fetchTrendingMovie() {
     try {
-      console.log(this.currentLanguage);
       const url = `${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.currentPage}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
