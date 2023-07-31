@@ -30,6 +30,7 @@ async function onSubmit(e) {
   Loading.standard();
 
   try {
+    ApiService.currentLanguage = localStorage.getItem('lang');
     const data = await ApiService.getFilmOnSearch();
     if (data.results.length !== 0) {
       cardsContainer.innerHTML = '';
