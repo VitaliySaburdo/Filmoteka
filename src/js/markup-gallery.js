@@ -43,8 +43,8 @@ function checkDate(release_date) {
 function checkTitle(title) {
   const arr = title.split('');
 
-  if (arr.length >= 33) {
-    return arr.slice(0, 33).join('') + '...';
+  if (arr.length >= 30) {
+    return arr.slice(0, 30).join('') + '...';
   }
   return title;
 }
