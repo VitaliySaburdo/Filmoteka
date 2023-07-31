@@ -13,7 +13,7 @@ export function renderLibrary(data) {
         <img src="${renderImg(
           poster_path
         )}" alt="${title}" class="gallery_img" width="395" height="574" />
-        <h2 class="gallery__title">${title}</h2>
+        <h2 class="gallery__title">${checkTitle(title)}</h2>
         <p class="gallery__txt">${genresConverting(
           genres
         )} | ${release_date.slice(0, 4)}
@@ -51,4 +51,13 @@ function genresConverting(genres) {
     return genreArray.join(', ');
   }
   return 'N/A';
+}
+
+function checkTitle(title) {
+  const arr = title.split('');
+
+  if (arr.length >= 30) {
+    return arr.slice(0, 30).join('') + '...';
+  }
+  return title;
 }
