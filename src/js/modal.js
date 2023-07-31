@@ -26,6 +26,7 @@ async function onOpenModal(event) {
     openModal();
     Loading.standard();
     try {
+      ApiService.currentLanguage = localStorage.getItem('lang');
       const [filmDetails, trailerData] = await Promise.all([
         ApiService.getFilmDetails(selectedMovieId),
         ApiService.getTrailerById(selectedMovieId),
