@@ -56,8 +56,9 @@ export function libraryStorage(movieData) {
   function handleButtonClick(type, button) {
     if (movieData) {
       const movieList = type === 'watch' ? watchMovie : queueMovie;
-      console.log(movieList);
       const movieIndex = movieList.findIndex(e => e.id === movieData.id);
+
+      console.log(movieIndex);
 
       if (movieIndex !== -1) {
         button.classList.remove('button--accent');
@@ -72,7 +73,8 @@ export function libraryStorage(movieData) {
 
         button.textContent = type === 'watch' ? addWatched : addQueue;
         movieList.splice(movieIndex, 1);
-        removeFromStorage(type);
+        console.log(movieList);
+        addToStorage(type, movieList);
         renderLibrary(movieList, type);
       } else {
         let removedWatched =
