@@ -53,7 +53,7 @@ export default class NewsApiService {
 
   async getGenres() {
     try {
-      const url = `${BASE_URL}genre/movie/list?api_key=${API_KEY}`;
+      const url = `${BASE_URL}genre/movie/list?api_key=${API_KEY}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
