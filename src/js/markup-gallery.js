@@ -51,13 +51,16 @@ function checkTitle(title) {
 
 function changeGenre(genre_ids) {
   const genresInfo = getFromStorage('genresList');
-  console.log(genresInfo);
 
-  const genreArray = genresInfo.map(genre => {
-    if (genre_ids === genre.id) {
-    return genre.name
+  const genreArray = [];
+
+  for (const genre_id of genre_ids) {
+    for (const genreInfo of genresInfo) {
+      if (genreInfo.id === genre_id) {
+        genreArray.push(genreInfo.name);
+      }
     }
-  })
+  }
   if (genreArray.length > 2) {
     return genreArray.slice(0, 2).join(', ') + ' ...';
   }
