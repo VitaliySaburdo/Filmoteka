@@ -62,7 +62,7 @@ function changeGenre(genre_ids) {
     }
   }
   if (genreArray.length > 2) {
-    return genreArray.slice(0, 2).join(', ') + ' and Other';
+    return genreArray.slice(0, 2).join(', ') + ' ...';
   }
   return genreArray.join(', ');
 }

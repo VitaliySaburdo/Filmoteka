@@ -8,7 +8,6 @@ export const markupModalById = (
     vote_average,
     vote_count,
     title,
-    original_title,
     genres,
     overview,
   },
@@ -23,7 +22,7 @@ export const markupModalById = (
   <img
     class="modal__img"
     src="${imgRender(poster_path)}"
-    alt="${original_title}"
+    alt="${title}"
     width="395"
     height="574"
   />
@@ -45,7 +44,7 @@ export const markupModalById = (
     </li>
     <li class="modal__item">
       <p class="modal__heading lng-originalTitle">Original Title</p>
-      <p class="modal__txt">${original_title}</p>
+      <p class="modal__txt">${title}</p>
     </li>
     <li class="modal__item">
       <p class="modal__heading lng-genre">Genre</p>
