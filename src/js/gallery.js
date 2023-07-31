@@ -14,7 +14,6 @@ async function startGalleryFilms() {
       ApiService.getGenres(),
       ApiService.fetchTrendingMovie(),
     ]);
-    console.log(genresData.genres);
 
     addToStorage('genresList', genresData.genres);
     renderGalleryFilms(movieData.results);
