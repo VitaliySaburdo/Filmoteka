@@ -9,6 +9,7 @@ const ApiService = new newsApiService();
 async function startGalleryFilms() {
   Loading.standard();
   try {
+    ApiService.currentLanguage = localStorage.getItem('lang') || 'en';
     const [genresData, movieData] = await Promise.all([
       ApiService.getGenres(),
       ApiService.fetchTrendingMovie(),
