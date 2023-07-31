@@ -1,4 +1,4 @@
-const scrollController = {
+export const scrollController = {
   scrollPosition: 0,
   disabledScroll() {
     scrollController.scrollPosition = window.scrollY;
@@ -19,4 +19,3 @@ const scrollController = {
     document.documentElement.style.scrollBehavior = '';
   },
 };
-export { scrollController };
