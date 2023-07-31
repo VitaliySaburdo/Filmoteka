@@ -9,13 +9,8 @@ if (localStorage.getItem('themePreference') === 'dark') {
 }
 
 function onSwitchBtn() {
-
   document.body.classList.toggle('dark-theme');
-
   toggleTheme.classList.toggle('toggle__light');
-
   const isDarkTheme = document.body.classList.contains('dark-theme');
-
   localStorage.setItem('themePreference', isDarkTheme ? 'dark' : 'light');
-
 }

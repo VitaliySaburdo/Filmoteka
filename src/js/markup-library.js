@@ -43,12 +43,7 @@ function renderImg(poster_path) {
 
 function genresConverting(genres) {
   if (genres.length) {
-    const genreArray = [];
-    genres.map(genre => {
-      genreArray.push(genre.name);
-    });
-
-    return genreArray.join(', ');
+    return genres.map(genre => genre.name).join(', ');
   }
   return 'N/A';
 }
