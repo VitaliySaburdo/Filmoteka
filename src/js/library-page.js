@@ -33,8 +33,15 @@ export function libraryStorage(movieData) {
       localStorage.getItem(type) !== null &&
       localStorage.getItem(type).includes(filmObject)
     ) {
-      button.textContent =
-        type === 'watch' ? 'REMOVE FROM WATCHED' : 'REMOVE FROM QUEUE';
+      let watchedBtnTxt =
+        localStorage.getItem('lang') === 'en'
+          ? 'REMOVE FROM WATCHED'
+          : 'ВИДАЛИТИ З ПЕРЕГЛЯНУТИХ';
+      let queueBtnTxt =
+        localStorage.getItem('lang') === 'en'
+          ? 'REMOVE TO QUEUE'
+          : 'ВИДАЛИТИ З ЧЕРГИ ПЕРЕГЛЯДУ';
+      button.textContent = type === 'watch' ? watchedBtnTxt : queueBtnTxt;
       button.classList.add('button--accent');
     }
   }
