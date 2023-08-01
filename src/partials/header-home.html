@@ -5,18 +5,28 @@
         <svg class="header__icon" width="24" height="23">
           <use href="./images/sprite.svg#film"></use>
         </svg>
-        <span class="header__logo--text" data-lang="filmoteka"> Filmoteka </span>
+        <span class="header__logo--text" data-lang="filmoteka">
+          Filmoteka
+        </span>
       </a>
       <!-- nav -->
       <nav class="nav">
         <ul class="nav__list">
           <li class="nav__item list">
-            <a class="nav__link nav__link--current link" href="./index.html" data-lang="home">
+            <a
+              class="nav__link nav__link--current link"
+              href="./index.html"
+              data-lang="home"
+            >
               Home
             </a>
           </li>
           <li class="nav__item list">
-            <a class="nav__link link" href="./library.html" data-lang="my_library">
+            <a
+              class="nav__link link"
+              href="./library.html"
+              data-lang="my_library"
+            >
               My library
             </a>
           </li>
@@ -46,16 +56,23 @@
     </div>
 
     <!-- Genre choose -->
-    <select name="genre_choose" id="genre_choose" class="genre_choose">
-      <option value="action">Action</option>
-      <option value="comedy">Comedy</option>
+
+    <select name="genre_select" id="genre_select" class="genre_select">
+      <option value="action" class="genre_option">Action</option>
+      <option value="comedy">Приключения</option>
     </select>
 
     <!-- form -->
     <div class="header__form">
       <form class="header__search-form" id="header-form">
-        <input class="input-form" type="text" name="searchQuery" autocomplete="off" data-lang="placeholder"
-          placeholder="Movie search" />
+        <input
+          class="input-form"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          data-lang="placeholder"
+          placeholder="Movie search"
+        />
         <button class="button-form" type="submit">
           <svg width="12" height="12" aria-label="Search">
             <use href="./images/sprite.svg#search"></use>
