@@ -1,15 +1,13 @@
 import NewsApiService from './api-services';
-import {renderGalleryFilms} from './markup-gallery';
+import { renderGalleryFilms } from './markup-gallery';
+import { generatePagination } from './pagination';
 
 const ApiService = new NewsApiService();
 
-import { getFromStorage } from './local-storage';
-
 const selectEl = document.getElementById('genre_select');
 
-const genres = getFromStorage('genresList');
-
-
+async function genresChoose() {
+  const { genres } = await ApiService.getGenres();
 
   const allGenresOption = document.createElement('option');
   allGenresOption.textContent = 'All genres';
@@ -21,12 +19,21 @@ const genres = getFromStorage('genresList');
     options.dataset.id = genre.id;
     selectEl.appendChild(options);
   });
-  selectEl.addEventListener('change', async(e) => {
+
+  selectEl.addEventListener('change', async e => {
     ApiService.genre = e.target.options[e.target.selectedIndex].dataset.id;
-    const data = await ApiService.getFilteredMovies() || await ApiService.fetchTrendingMovie()
-    console.log(data);
-    // renderGalleryFilms(data.results);
+    ApiService.currentLanguage = localStorage.getItem('lang');
+    ApiService.currentPage = 1;
+    const { results, total_pages } = await ApiService.getFilteredMovies();
+    // generatePagination(
+    //   ApiService.genre,
+    //   '',
+    //   total_pages,
+    //   ApiService.currentPage
+    // );
+    renderGalleryFilms(results);
   });
+}
 
-
-
+genresChoose();
+// {page: 1, results: Array(20), total_pages: 1467, total_results: 29323}
