@@ -297,10 +297,25 @@
   width: 196px;
   height: 30px;
 
+  // &:focus-visible {
+  //   outline: none;
+  // }
+
   background-color: rgba(179, 73, 73, 0.808);
   border-radius: 30px;
   border: none;
   @include mq('tab') {
     width: 150px;
   }
+}
+
+/* Style the dropdown arrow icon */
+.genre_select::after {
+  content: '\25BC'; /* Unicode for a downward arrow (▼) */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  pointer-events: none; /* Prevent clicks on the arrow */
 }
