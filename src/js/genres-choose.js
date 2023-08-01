@@ -7,7 +7,10 @@ const ApiService = new NewsApiService();
 const selectEl = document.getElementById('genre_select');
 
 async function genresChoose() {
+   ApiService.currentLanguage = localStorage.getItem('lang');
   const { genres } = await ApiService.getGenres();
+  console.log(genres);
+  
 
   const allGenresOption = document.createElement('option');
   allGenresOption.textContent = 'All genres';
@@ -22,7 +25,7 @@ async function genresChoose() {
 
   selectEl.addEventListener('change', async e => {
     ApiService.genre = e.target.options[e.target.selectedIndex].dataset.id;
-    ApiService.currentLanguage = localStorage.getItem('lang');
+   
     ApiService.currentPage = 1;
     const { results, total_pages } = await ApiService.getFilteredMovies();
     // generatePagination(
