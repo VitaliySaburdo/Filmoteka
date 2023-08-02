@@ -1,6 +1,7 @@
 import { addToStorage } from './local-storage';
 import NewsApiService from './api-services';
 import { renderGalleryFilms } from './markup-gallery';
+import { genresChoose } from './genres-choose';
 
 const ApiService = new NewsApiService();
 
@@ -26,6 +27,8 @@ async function toggleLanguage() {
   ApiService.currentPage = JSON.parse(localStorage.getItem('page'));
   const genresData = await ApiService.getGenres();
   addToStorage('genresList', genresData.genres);
+  genresChoose(genresData.genres);
+
   const data = await ApiService.fetchTrendingMovie();
   renderGalleryFilms(data.results);
 }
