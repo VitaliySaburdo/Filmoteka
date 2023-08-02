@@ -12,6 +12,7 @@ export async function genresChoose(langGenres) {
   let savedGenres = getFromStorage('genresList');
 
   let currentGenre = savedGenres || langGenres || genres;
+  let totalPages;
 
   if (selectEl) {
     selectEl.innerHTML = '';
@@ -21,7 +22,7 @@ export async function genresChoose(langGenres) {
       currentLanguage === 'en' ? 'All genres' : 'Всі жанри';
     selectEl.appendChild(allGenresOption);
     selectEl.value = 'All genres';
-    
+
     currentGenre.forEach(genre => {
       const options = document.createElement('option');
       options.textContent = genre.name;
@@ -35,10 +36,12 @@ export async function genresChoose(langGenres) {
       ApiService.currentPage = 1;
       ApiService.currentLanguage = localStorage.getItem('lang');
       const { results, total_pages } = await ApiService.getFilteredMovies();
-      console.log(results);
+
+      totalPages = total_pages > 500 ? 500 : movieData.total_pages;
+
       generatePagination(
         '',
-        total_pages,
+        totalPages,
         ApiService.currentPage,
         ApiService.genre
       );

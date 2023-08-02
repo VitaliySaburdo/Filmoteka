@@ -14,7 +14,6 @@ searchForm.addEventListener('submit', onSubmit);
 async function onSubmit(e) {
   e.preventDefault();
   ApiService.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
-  console.log(ApiService.searchQuery);
   e.currentTarget.elements.searchQuery.value = '';
   if (ApiService.searchQuery === '') {
     Notiflix.Notify.info(`Please enter your query`, {

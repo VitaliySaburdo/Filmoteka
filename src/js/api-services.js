@@ -17,10 +17,7 @@ export default class NewsApiService {
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
-      console.log(error.response);
-      console.log(error.response.data);
-      console.log(error.response.status);
-      console.log(error.response.headers);
+      console.log(error);
     }
   }
 
