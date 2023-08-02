@@ -21,6 +21,7 @@ export async function genresChoose(langGenres) {
       currentLanguage === 'en' ? 'All genres' : 'Всі жанри';
     selectEl.appendChild(allGenresOption);
     selectEl.value = 'All genres';
+    
     currentGenre.forEach(genre => {
       const options = document.createElement('option');
       options.textContent = genre.name;

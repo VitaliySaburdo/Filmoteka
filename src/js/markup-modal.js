@@ -90,7 +90,7 @@ export const markupModalById = (
         ? `<button type="button" class="modal__btn--youtube" data-trailer=${
             results[0].key
           }>  
-    <svg width="160" height="64">
+    <svg width="120" height="48">
       <use href=${icons + '#icon-youtube'}></use>
     </svg>
   </button>`

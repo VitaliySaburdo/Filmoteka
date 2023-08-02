@@ -194,6 +194,10 @@
 .modal__btn--left {
   @extend %btn;
   width: 130px;
+
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   @include mq(tab) {
     width: 125px;
   }
@@ -201,15 +205,26 @@
     width: 136px;
     margin-left: 10px;
   }
+  &:hover {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
+  }
 }
 .modal__btn--right {
   @extend %btn;
   width: 130px;
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   @include mq(tab) {
     width: 125px;
   }
   @include mq(desk) {
     width: 136px;
+  }
+  &:hover {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+      1px 4px 6px rgba(0, 0, 0, 0.16);
   }
 }
 
@@ -223,19 +238,23 @@
 }
 .modal__btn--youtube {
   margin-top: 40px;
-  display: block;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
+  padding: 5px;
   background-color: transparent;
-  border: none;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #c2c2c2;
   cursor: pointer;
   fill: #c4302b;
-  transition-property: fill;
+  transition-property: fill, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
     fill: red;
+    box-shadow: 5px 5px 10px #c4302b;
   }
   @include mq(tab) {
     position: absolute;
@@ -247,6 +266,6 @@
     position: relative;
     left: 0;
     bottom: 0;
-    margin-left: 65px;
+    margin-left: 90px;
   }
 }

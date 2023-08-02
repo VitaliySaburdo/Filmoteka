@@ -131,6 +131,7 @@ async function handleButtonClick() {
     console.log(genre);
     generatePagination('', totalItems, '', genre);
     ApiService.genre = genre;
+    ApiService.currentLanguage = localStorage.getItem('lang');
     const { results } = await ApiService.getFilteredMovies();
     renderGalleryFilms(results);
   } else if (query) {
