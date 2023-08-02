@@ -23,7 +23,7 @@ export default class NewsApiService {
 
   async getFilteredMovies() {
     try {
-      const url = `${BASE_URL}discover/movie?api_key=${API_KEY}&with_genres=${this.genre}&language=${this.currentLanguage}`;
+      const url = `${BASE_URL}discover/movie?api_key=${API_KEY}&with_genres=${this.genre}&page=${this.currentPage}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {

@@ -33,7 +33,12 @@ export async function genresChoose(langGenres) {
 
       ApiService.currentPage = 1;
       const { results, total_pages } = await ApiService.getFilteredMovies();
-      generatePagination('', total_pages, ApiService.currentPage);
+      generatePagination(
+        '',
+        total_pages,
+        ApiService.currentPage,
+        ApiService.genre
+      );
       renderGalleryFilms(results);
     });
   }

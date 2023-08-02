@@ -5,10 +5,17 @@ const ApiService = new newsApiService();
 
 let totalItems;
 let query;
+let genre;
 
-export function generatePagination(querySearch, itemsCount, page) {
+export function generatePagination(
+  querySearch,
+  itemsCount,
+  page,
+  currentGenre
+) {
   totalItems = itemsCount;
   query = querySearch;
+  genre = currentGenre;
   localStorage.setItem('page', ApiService.currentPage);
 
   const paginationContainer = document.querySelector('.pagination');
@@ -120,7 +127,12 @@ if (prevButton) {
 }
 
 async function handleButtonClick() {
-  if (query) {
+  if (genre) {
+    generatePagination('', totalItems, '', genre);
+    ApiService.genre = genre;
+    const { results } = await ApiService.getFilteredMovies();
+    renderGalleryFilms(results);
+  } else if (query) {
     generatePagination(query, totalItems);
     ApiService.searchQuery = query;
     ApiService.currentLanguage = localStorage.getItem('lang');
