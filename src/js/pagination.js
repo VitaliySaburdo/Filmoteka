@@ -9,7 +9,7 @@ let query;
 export function generatePagination(querySearch, itemsCount, page) {
   totalItems = itemsCount;
   query = querySearch;
-  localStorage.setItem('page', ApiService.currentPage)
+  localStorage.setItem('page', ApiService.currentPage);
 
   const paginationContainer = document.querySelector('.pagination');
   paginationContainer.innerHTML = '';
@@ -40,7 +40,7 @@ export function generatePagination(querySearch, itemsCount, page) {
     }
     li.addEventListener('click', async () => {
       ApiService.currentPage = pageNumber;
-      localStorage.setItem('page', ApiService.currentPage)
+      localStorage.setItem('page', ApiService.currentPage);
       handleButtonClick();
       backToTop();
     });
@@ -96,24 +96,28 @@ export function generatePagination(querySearch, itemsCount, page) {
 }
 
 const nextButton = document.querySelector('.next');
-nextButton.addEventListener('click', async () => {
-  if (ApiService.currentPage < totalItems) {
-    ApiService.currentPage++;
-    localStorage.setItem('page', ApiService.currentPage)
-    handleButtonClick();
-    backToTop();
-  }
-});
+if (nextButton) {
+  nextButton.addEventListener('click', async () => {
+    if (ApiService.currentPage < totalItems) {
+      ApiService.currentPage++;
+      localStorage.setItem('page', ApiService.currentPage);
+      handleButtonClick();
+      backToTop();
+    }
+  });
+}
 
 const prevButton = document.querySelector('.prev');
-prevButton.addEventListener('click', async () => {
-  if (ApiService.currentPage > 1) {
-    ApiService.currentPage--;
-    localStorage.setItem('page', ApiService.currentPage)
-    handleButtonClick();
-    backToTop();
-  }
-});
+if (prevButton) {
+  prevButton.addEventListener('click', async () => {
+    if (ApiService.currentPage > 1) {
+      ApiService.currentPage--;
+      localStorage.setItem('page', ApiService.currentPage);
+      handleButtonClick();
+      backToTop();
+    }
+  });
+}
 
 async function handleButtonClick() {
   if (query) {

@@ -23,7 +23,6 @@ export default class NewsApiService {
 
   async getFilteredMovies() {
     try {
-      console.log(this.genre);
       const url = `${BASE_URL}discover/movie?api_key=${API_KEY}&with_genres=${this.genre}&language=${this.currentLanguage}`;
       const response = await axios.get(url);
       return response.data;
