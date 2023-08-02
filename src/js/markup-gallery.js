@@ -11,7 +11,11 @@ export function renderGalleryFilms(moviesCards) {
         title,
         genre_ids,
         release_date,
+        vote_average
       }) => `<li class="gallery__item" data-id="${id}">
+
+        <span class="modal__vote gallery">${vote_average.toFixed(1)}</span>
+
         <img src="${renderImg(
           poster_path
         )}" alt="${title}" class="gallery_img" width="395" height="574" />

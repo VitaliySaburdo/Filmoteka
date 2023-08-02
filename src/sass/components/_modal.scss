@@ -156,6 +156,14 @@
   background-color: var(--cl-accent);
   margin-right: 2px;
   color: var(--cl-white);
+  &.gallery {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    @include fonts(16px, 500, 20px);
+    width: 46px;
+    height: 26px;
+  }
 }
 .modal__votes {
   display: flex;
