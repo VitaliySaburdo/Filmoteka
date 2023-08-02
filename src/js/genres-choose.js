@@ -33,6 +33,7 @@ export async function genresChoose(langGenres) {
 
       ApiService.currentPage = 1;
       const { results, total_pages } = await ApiService.getFilteredMovies();
+      console.log(results);
       generatePagination(
         '',
         total_pages,

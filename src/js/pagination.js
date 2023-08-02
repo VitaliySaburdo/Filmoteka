@@ -128,6 +128,7 @@ if (prevButton) {
 
 async function handleButtonClick() {
   if (genre) {
+    console.log(genre);
     generatePagination('', totalItems, '', genre);
     ApiService.genre = genre;
     const { results } = await ApiService.getFilteredMovies();
