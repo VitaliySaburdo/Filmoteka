@@ -32,6 +32,7 @@ export async function genresChoose(langGenres) {
       ApiService.genre = e.target.options[e.target.selectedIndex].dataset.id;
 
       ApiService.currentPage = 1;
+      ApiService.currentLanguage = localStorage.getItem('lang');
       const { results, total_pages } = await ApiService.getFilteredMovies();
       console.log(results);
       generatePagination(
