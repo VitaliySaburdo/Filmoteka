@@ -1,4 +1,5 @@
 import NewsApiService from './api-services';
+import { getFromStorage } from './local-storage';
 import { renderGalleryFilms } from './markup-gallery';
 
 const ApiService = new NewsApiService();
@@ -7,8 +8,9 @@ const selectEl = document.getElementById('genre_select');
 
 export async function genresChoose(langGenres) {
   const { genres } = await ApiService.getGenres();
+  let savedGenres = getFromStorage('genresList');
 
-  let currentGenre = langGenres || genres;
+  let currentGenre = savedGenres || langGenres || genres;
 
   selectEl.innerHTML = '';
   const allGenresOption = document.createElement('option');
