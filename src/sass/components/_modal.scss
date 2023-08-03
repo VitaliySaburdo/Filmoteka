@@ -251,18 +251,19 @@
   margin-right: auto;
   padding: 5px;
   background-color: transparent;
-  border: 1px solid #000000;
+  border: 1px solid var(--cl-black);
   border-radius: 5px;
-  box-shadow: 5px 5px 10px #c2c2c2;
+  background-color: var(--cl-white);
+  box-shadow: 5px 5px 10px var(--box-shadow-cl);
   cursor: pointer;
-  fill: #c4302b;
+  fill: var(--cl-dark-red);
   transition-property: fill, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    fill: red;
-    box-shadow: 5px 5px 10px #c4302b;
+    fill: var(--cl-red);
+    box-shadow: 5px 5px 10px var(--cl-dark-red);
   }
   @include mq(tab) {
     position: absolute;

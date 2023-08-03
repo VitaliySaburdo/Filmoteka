@@ -128,7 +128,6 @@ if (prevButton) {
 
 async function handleButtonClick() {
   if (genre) {
-    console.log(genre);
     generatePagination('', totalItems, '', genre);
     ApiService.genre = genre;
     ApiService.currentLanguage = localStorage.getItem('lang');
