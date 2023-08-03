@@ -38,6 +38,7 @@ function renderImg(poster_path) {
 }
 
 function checkDate(release_date) {
+  console.log(release_date);
   if (release_date) {
     return release_date.split('-')[0];
   }

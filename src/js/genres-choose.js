@@ -33,12 +33,10 @@ export async function genresChoose(langGenres) {
 
     selectEl.addEventListener('change', async e => {
       ApiService.genre = e.target.options[e.target.selectedIndex].dataset.id;
-      // console.log(ApiService.genre);
 
       ApiService.currentPage = 1;
       ApiService.currentLanguage = localStorage.getItem('lang');
       const { results, total_pages } = await ApiService.getFilteredMovies();
-      // addToStorage('currentGenre', ApiService.genre)
       totalPages = total_pages > 500 ? 500 : movieData.total_pages;
 
       generatePagination(
