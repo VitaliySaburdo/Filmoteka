@@ -1,5 +1,9 @@
 import newsApiService from './api-services';
-import { addToStorage } from './local-storage';
+import {
+  addToStorage,
+  getFromStorage,
+  removeFromStorage,
+} from './local-storage';
 import { generatePagination } from './pagination';
 import { renderGalleryFilms } from './markup-gallery';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -15,7 +19,9 @@ async function startGalleryFilms() {
       ApiService.getGenres(),
       ApiService.fetchTrendingMovie(),
     ]);
-
+    if (getFromStorage('currentGenre')) {
+      removeFromStorage('currentGenre');
+    }
     addToStorage('genresList', genresData.genres);
     renderGalleryFilms(movieData.results);
     totalPages = movieData.total_pages > 500 ? 500 : movieData.total_pages;

@@ -1,5 +1,5 @@
 import NewsApiService from './api-services';
-import { getFromStorage } from './local-storage';
+import { addToStorage, getFromStorage } from './local-storage';
 import { renderGalleryFilms } from './markup-gallery';
 import { generatePagination } from './pagination';
 
@@ -36,7 +36,7 @@ export async function genresChoose(langGenres) {
       ApiService.currentPage = 1;
       ApiService.currentLanguage = localStorage.getItem('lang');
       const { results, total_pages } = await ApiService.getFilteredMovies();
-
+      addToStorage('currentGenre', ApiService.genre)
       totalPages = total_pages > 500 ? 500 : movieData.total_pages;
 
       generatePagination(

@@ -1,4 +1,4 @@
-import { addToStorage } from './local-storage';
+import { addToStorage, getFromStorage, removeFromStorage } from './local-storage';
 import NewsApiService from './api-services';
 import { renderGalleryFilms } from './markup-gallery';
 import { genresChoose } from './genres-choose';
@@ -29,8 +29,21 @@ async function toggleLanguage() {
   addToStorage('genresList', genresData.genres);
   genresChoose(genresData.genres);
 
+  if (getFromStorage('currentGenre')) {
+    ApiService.genre = getFromStorage('currentGenre')
+    console.log(ApiService.genre);
+    
+    const { results} = await ApiService.getFilteredMovies();
+    renderGalleryFilms(results);
+  } else {
+    removeFromStorage('currentGenre')
   const data = await ApiService.fetchTrendingMovie();
   renderGalleryFilms(data.results);
+  }
+  
+  
+
+
 }
 
 function setLanguage(currentLanguage) {
