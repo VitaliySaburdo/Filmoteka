@@ -1,8 +1,8 @@
 import NewsApiService from './api-services';
-import { addToStorage, getFromStorage } from './local-storage';
+import { getFromStorage } from './local-storage';
 import { renderGalleryFilms } from './markup-gallery';
 import { generatePagination } from './pagination';
-import {startGalleryFilms} from './gallery';
+
 
 const ApiService = new NewsApiService();
 
