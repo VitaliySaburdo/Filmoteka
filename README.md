@@ -25,3 +25,5 @@ The following libraries and technologies are used in the project:
 - pagination on pure JS;
 - modal window;
 - in library page saving in local storage;
+- change language setting (uk, en);
+- sorting by genres;
