@@ -214,7 +214,7 @@
   left: 0;
   width: 55px;
   height: 30px;
-  background: rgba(179, 73, 73, 0.808);
+  background: var(--cl-red-brown);
   border-radius: 30px;
   cursor: pointer;
 }
@@ -225,7 +225,7 @@
   left: 0;
   width: 30px;
   height: 30px;
-  background-color: #ffffff;
+  background-color: var(--cl-white);
   border-radius: 50%;
   transition: 0.3s;
 }
@@ -256,7 +256,7 @@
 }
 
 .language__txt {
-  color: #ffffff;
+  color: var(--cl-white);
 }
 
 .theme__icon {
@@ -290,14 +290,14 @@
   -moz-appearance: none;
   -webkit-appearance: none;
   outline: none;
-  color: #ffffff;
+  color: var(--cl-white);
   cursor: pointer;
 
   width: 140px;
 
   height: 30px;
 
-  background-color: rgba(179, 73, 73, 0.808);
+  background-color: var(--cl-red-brown);
   border-radius: 30px;
   border: none;
   @include mq('tab') {
