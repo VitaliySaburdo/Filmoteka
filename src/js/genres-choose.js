@@ -2,6 +2,7 @@ import NewsApiService from './api-services';
 import { addToStorage, getFromStorage } from './local-storage';
 import { renderGalleryFilms } from './markup-gallery';
 import { generatePagination } from './pagination';
+import {startGalleryFilms} from './gallery';
 
 const ApiService = new NewsApiService();
 
@@ -32,11 +33,12 @@ export async function genresChoose(langGenres) {
 
     selectEl.addEventListener('change', async e => {
       ApiService.genre = e.target.options[e.target.selectedIndex].dataset.id;
+      // console.log(ApiService.genre);
 
       ApiService.currentPage = 1;
       ApiService.currentLanguage = localStorage.getItem('lang');
       const { results, total_pages } = await ApiService.getFilteredMovies();
-      addToStorage('currentGenre', ApiService.genre)
+      // addToStorage('currentGenre', ApiService.genre)
       totalPages = total_pages > 500 ? 500 : movieData.total_pages;
 
       generatePagination(

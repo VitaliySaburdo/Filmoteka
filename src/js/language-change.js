@@ -29,17 +29,17 @@ async function toggleLanguage() {
   addToStorage('genresList', genresData.genres);
   genresChoose(genresData.genres);
 
-  if (getFromStorage('currentGenre')) {
-    ApiService.genre = getFromStorage('currentGenre')
-    console.log(ApiService.genre);
+  // if (getFromStorage('currentGenre')) {
+  //   ApiService.genre = getFromStorage('currentGenre')
+  //   console.log(ApiService.genre);
     
-    const { results} = await ApiService.getFilteredMovies();
-    renderGalleryFilms(results);
-  } else {
+  //   const { results} = await ApiService.getFilteredMovies();
+  //   renderGalleryFilms(results);
+  // } 
     removeFromStorage('currentGenre')
   const data = await ApiService.fetchTrendingMovie();
   renderGalleryFilms(data.results);
-  }
+  
   
   
 
