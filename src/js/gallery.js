@@ -10,7 +10,7 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const ApiService = new newsApiService();
 
-async function startGalleryFilms() {
+(async function startGalleryFilms() {
   let totalPages;
   Loading.standard();
   try {
@@ -31,5 +31,6 @@ async function startGalleryFilms() {
   } finally {
     Loading.remove(300);
   }
-}
-startGalleryFilms();
+})();
+
+
