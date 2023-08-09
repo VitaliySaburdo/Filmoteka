@@ -3,7 +3,6 @@ import { getFromStorage } from './local-storage';
 import { renderGalleryFilms } from './markup-gallery';
 import { generatePagination } from './pagination';
 
-
 const ApiService = new NewsApiService();
 
 const selectEl = document.getElementById('genre_select');
@@ -37,7 +36,7 @@ export async function genresChoose(langGenres) {
       ApiService.currentPage = 1;
       ApiService.currentLanguage = localStorage.getItem('lang');
       const { results, total_pages } = await ApiService.getFilteredMovies();
-      totalPages = total_pages > 500 ? 500 : movieData.total_pages;
+      totalPages = total_pages > 500 ? 500 : total_pages;
 
       generatePagination(
         '',
