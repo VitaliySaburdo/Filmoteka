@@ -33,18 +33,24 @@ export async function genresChoose(langGenres) {
     selectEl.addEventListener('change', async e => {
       ApiService.genre = e.target.options[e.target.selectedIndex].dataset.id;
 
-      ApiService.currentPage = 1;
-      ApiService.currentLanguage = localStorage.getItem('lang');
-      const { results, total_pages } = await ApiService.getFilteredMovies();
-      totalPages = total_pages > 500 ? 500 : total_pages;
-
-      generatePagination(
-        '',
-        totalPages,
-        ApiService.currentPage,
-        ApiService.genre
-      );
-      renderGalleryFilms(results);
+      if (ApiService.genre === undefined) {
+        const { results, total_pages } = await ApiService.fetchTrendingMovie();
+        totalPages = total_pages > 500 ? 500 : total_pages;
+        generatePagination('', totalPages);
+        renderGalleryFilms(results);
+      } else {
+        ApiService.currentPage = 1;
+        ApiService.currentLanguage = localStorage.getItem('lang');
+        const { results, total_pages } = await ApiService.getFilteredMovies();
+        totalPages = total_pages > 500 ? 500 : total_pages;
+        generatePagination(
+          '',
+          totalPages,
+          ApiService.currentPage,
+          ApiService.genre
+        );
+        renderGalleryFilms(results);
+      }
     });
   }
 }
