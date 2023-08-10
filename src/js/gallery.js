@@ -32,5 +32,3 @@ const ApiService = new newsApiService();
     Loading.remove(300);
   }
 })();
-
-
