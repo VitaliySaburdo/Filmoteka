@@ -1,7 +1,5 @@
 import {
   addToStorage,
-  getFromStorage,
-  removeFromStorage,
 } from './local-storage';
 import NewsApiService from './api-services';
 import { renderGalleryFilms } from './markup-gallery';
